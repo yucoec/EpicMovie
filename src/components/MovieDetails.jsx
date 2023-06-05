@@ -47,7 +47,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
         <>
             <Helmet>
                 <title>Epic Movie | {details.title}</title>
-                <meta property="og:title" content={`EpicMovie | ${details.title}`} />
+                <meta property="og:title" content={details.title} />
                 <meta property="og:image" content={`https://image.tmdb.org/t/p/w1280${details.backdrop_path}`} />
             </Helmet>
             <section className='bg-center bg-no-repeat bg-cover h-[600px]' style={{
@@ -88,7 +88,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                         <section className='flex items-center flex-col gap-2 min-[482px]:mx-5' key={id}>
                             <div className='flex gap-2 justify-center flex-col items-center mb-2'>
                                 <p className='flex gap-2 justify-center items-center text-xl py-5'><MdCloudDownload /> Descarga 1080p Latino - Ingles</p>
-                                <a href={descarga}>
+                                <a href={descarga} target='_blank' rel='noreferrer'>
                                     <img className='w-96 hover:scale-105 duration-300' src={imagenBoton} alt="imagen del boton" />
                                 </a>
                                 {password && <><p className='flex gap-2 justify-center text-xl py-3'>Copiar  contraseña</p><div className='flex justify-center  items-center mb-2'>
@@ -103,7 +103,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                             </div>
                             <div className='flex gap-2 justify-center flex-col items-center mb-2'>
                                 <p className=' w-full text-xl py-4 text-center'>Link para ver la pelicula Online:</p>
-                                <a href={online}><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
+                                <a href={online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
                             </div>
                         </section>
                     ))}
