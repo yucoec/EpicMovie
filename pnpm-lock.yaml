@@ -2,25 +2,25 @@ lockfileVersion: '6.0'
 
 dependencies:
   react:
-    specifier: ^18.2.0
+    specifier: 18.2.0
     version: 18.2.0
   react-dom:
-    specifier: ^18.2.0
+    specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
   react-helmet:
-    specifier: ^6.1.0
+    specifier: 6.1.0
     version: 6.1.0(react@18.2.0)
   react-icons:
-    specifier: ^4.9.0
+    specifier: 4.9.0
     version: 4.9.0(react@18.2.0)
   react-router-dom:
-    specifier: ^6.11.2
+    specifier: 6.11.2
     version: 6.11.2(react-dom@18.2.0)(react@18.2.0)
   react-spinners:
-    specifier: ^0.13.8
+    specifier: 0.13.8
     version: 0.13.8(react-dom@18.2.0)(react@18.2.0)
   react-youtube:
-    specifier: ^10.1.0
+    specifier: 10.1.0
     version: 10.1.0(react@18.2.0)
 
 devDependencies:
