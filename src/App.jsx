@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import EpiModal from './components/EpiModal'
 import Header from './components/Header'
 import DetailsMoviePage from './pages/DetailsMoviePage.jsx'
 import DetailsSeriePage from './pages/DetailsSeriePage'
@@ -9,16 +10,17 @@ import { Series } from './pages/Series'
 function App() {
 
   return (
-    <BrowserRouter>
+    <Router>
       <Header />
+      <EpiModal />
       <Routes>
-        <Route index element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path='/series' element={<Series />} />
         <Route path='/details/:id' element={<DetailsMoviePage />} />
         <Route path='/series/details/:id' element={<DetailsSeriePage />} />
         <Route path='/search/:keyword' element={<SearchedMovies />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   )
 }
 

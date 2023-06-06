@@ -60,7 +60,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                         <p className='text-[rgba(255,255,255,.7)] text-sm mb-2 flex  items-center'>{details.release_date} · {horas + 'h ' + minutosRestantes + ' min'} ·  <AiFillStar className='text-yellow-400 w-4 mx-1' />{details.vote_average.toFixed(1)}</p>
                     </div>
                     <div className='min-[482px]:mx-5'>
-                        <div className='flex w-full flex-wrap min-[600px]:flex-nowrap'>
+                        <div className='flex w-full flex-wrap min-[600px]:flex-nowrap px-1'>
                             {details.poster_path ? <img className='w-24 min-[600px]:static min-[600px]:w-[calc(27.65%-0.125rem)] absolute left-3 top-[35rem] min-[482px]:w-[120px] min-[482px]:left-5 min-[482px]:top-[33rem]' src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title} /> : <img src={imageNotFound} alt='img not found' />}
                             <div className='min-[600px]:w-[calc(72.35%-0.125rem)] min-[600px]:ml-2 min-[600px]:h-auto w-[640px] h-[340px]'>
                                 {loading
@@ -84,10 +84,10 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                         </div>
                     </div>
 
-                    {movieLinks?.map(({ id, imagenBoton, descarga, online, password }) => (
-                        <section className='flex items-center flex-col gap-2 min-[482px]:mx-5' key={id}>
+                    {movieLinks?.map(({ id, imagenBoton, descarga, online, password, calidad }) => (
+                        <section className='flex items-center flex-col gap-2 min-[482px]:mx-5 px-2' key={id}>
                             <div className='flex gap-2 justify-center flex-col items-center mb-2'>
-                                <p className='flex gap-2 justify-center items-center text-xl py-5'><MdCloudDownload /> Descarga 1080p Latino - Ingles</p>
+                                <p className='flex gap-2 justify-center items-center text-xl py-5'><MdCloudDownload /> {calidad === 'HD' ? 'Descarga 1080p Latino - Ingles' : 'Descarga CAM'}</p>
                                 <a href={descarga} target='_blank' rel='noreferrer'>
                                     <img className='w-96 hover:scale-105 duration-300' src={imagenBoton} alt="imagen del boton" />
                                 </a>
@@ -96,7 +96,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                                     <button className='bg-cyan-500 px-3 py-1 rounded-r-md' onClick={handleCopyClick}>Copiar</button>
                                 </div></>}
                             </div>
-                            <div className='flex gap-2 justify-center items-center mb-2 bg-cyan-500 rounded-md w-1/2 p-1'>
+                            <div className='flex gap-2 justify-center items-center mb-2 bg-cyan-500 rounded-md w-1/2 p-1 max-lg:w-2/3 max-[670px]:w-full'>
                                 <img className='w-11 p-1' src={vlcLogo} alt="Logo de vlc reproductor" />
                                 <p>Te recomendamos usar el reproductor VLC Player para que no tengas problemas al reproducir La Peliculas en tu PC o celular.</p>
 
