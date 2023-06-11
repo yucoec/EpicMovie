@@ -7,7 +7,7 @@ export const ListOfMovies = ({ movieList }) => {
             <Helmet>
                 <title>Epic Movie - Peliculas</title>
             </Helmet>
-            <div className='grid gap-4 grid-cols-16 mx-[5px] justify-items-center justify-center pt-2'>
+            <div className='grid gap-4 grid-cols-16 mx-[5px] max-[482px]:grid-cols-17 justify-items-center justify-center pt-2'>
                 {movieList.map(({ id, category, calidad }) => (
                     <CardMovie key={id} id={id} calidad={calidad} category={category} />
                 ))}

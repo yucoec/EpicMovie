@@ -24,7 +24,7 @@ const EpiModal = () => {
             <a href="https://t.me/EpicMoviee" target="_blank" rel="noopener noreferrer">
                 <img src={QrCode} alt="Epic Movie" />
             </a>
-            <p className="py-2 text-white"> Telegram (aquí iré publicando cada que se agregue una película o serie)</p>
+            <p className="py-2 text-white"> Telegram (aquí iré publicando cada que se agregue una película o serie) tambien</p>
             <div className="flex justify-center">
                 <a href="https://t.me/EpicMoviee" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-cyan-500 p-3 rounded-2xl w-3/4 justify-center text-lg text-white">Epic Movie <BsTelegram /></a>
             </div>
