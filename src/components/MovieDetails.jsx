@@ -50,12 +50,9 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
             <Helmet>
                 <meta property="og:image" content={`https://image.tmdb.org/t/p/w1280${details.backdrop_path}`} />
                 <title>Epic Movie | {details.title}</title>
+                <meta property="og:type" content="website" />
                 <meta property="og:title" content={details.title} />
-                <meta property="og:locale" content="es_ES" />
-                <meta property="og:site_name" content="Epic Movie" />
-                <meta property="og:type" content="article" />
-                <meta property="og:description" content={`Película "${details.title}" completa del 2023 en español latino, castellano y subtitulada. Descargar gratis "${details.title}". ${details.original_title}`} />
-                <meta property="og:url" content={currentUrl} />
+                <meta property="og:image" content={`https://image.tmdb.org/t/p/w1280${details.backdrop_path}`} />
             </Helmet>
             <section className='bg-center bg-no-repeat bg-cover h-[600px]' style={{
                 backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0)), url('https://image.tmdb.org/t/p/w1280${details.backdrop_path}')`
@@ -80,7 +77,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                             </div>
                         </div>
                         <div className='pl-[calc(95px+1rem)] min-[600px]:pl-0 min-[482px]:pl-[calc(120px+1rem)] my-2'>
-                            <section className='mx-3'>
+                            <section className='mx-2'>
                                 <div className='flex gap-1 flex-wrap mb-2'>
                                     {details.genres.map(({ id, name }) => (
                                         <span className='rounded-2xl border-[rgba(255,255,255,.7)] p-1 border-[1px] text-sm' key={id}>{name}</span>

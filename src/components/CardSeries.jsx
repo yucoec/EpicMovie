@@ -17,9 +17,10 @@ export function CardSeries({ id, category }) {
     }
 
     const { id: movieId, poster_path, name, first_air_date, vote_average } = info;
+    const nameSerie = name.split(' ').join('-').toLowerCase();
 
     return (
-        <Link to={`/series/details/${id}`} className='cursor-pointer h-auto bg-[#1a1a1a] w-full rounded-b mb-2  hover:scale-105 duration-300' id={movieId}>
+        <Link to={`/series/${id}/${nameSerie}`} className='cursor-pointer h-auto bg-[#1a1a1a] w-full rounded-b mb-2  hover:scale-105 duration-300' id={movieId}>
             {poster_path ? <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={`poster de ${name}`} /> : <img src={imageNotFound} alt='img not found' />}
             <div className='m-1 flex items-center gap-1'>
                 <AiFillStar className='text-yellow-500 w-4' />
