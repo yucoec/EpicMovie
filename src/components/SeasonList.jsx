@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import getSeasonList from "../services/getSeasonList";
 
 const SeasonList = ({ id, season_number, name }) => {
@@ -9,8 +10,12 @@ const SeasonList = ({ id, season_number, name }) => {
         })
     }, [id])
 
+
+    const nameSerie = name.split(' ').join('-').toLowerCase();
+    const episode = season.map(({ episode_number }) => episode_number)
+
     return (
-        <>
+        <Link to={`/episode/${nameSerie + season_number + "x" + episode}`}>
             <h3 className="text-center py-3">{`${name} Temporada ${season_number}`}</h3>
             <div className="text-white grid grid-cols-4 gap-4 min-[482px]:mx-5 justify-items-center justify-center pt-2">
                 {season.map(({ name, id, still_path }) => (
@@ -25,7 +30,7 @@ const SeasonList = ({ id, season_number, name }) => {
 
 
             </div >
-        </>
+        </Link>
     )
 
 }
