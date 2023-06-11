@@ -53,6 +53,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content={details.title} />
                 <meta property="og:image" content={`https://image.tmdb.org/t/p/w1280${details.backdrop_path}`} />
+                <meta property="og:url" content={currentUrl} />
             </Helmet>
             <section className='bg-center bg-no-repeat bg-cover h-[600px]' style={{
                 backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0)), url('https://image.tmdb.org/t/p/w1280${details.backdrop_path}')`

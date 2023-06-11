@@ -16,8 +16,8 @@ export function CardSeries({ id, category }) {
         return null;
     }
 
-    const { id: movieId, poster_path, name, first_air_date, vote_average } = info;
-    const nameSerie = name.split(' ').join('-').toLowerCase();
+    const { id: movieId, poster_path, name, first_air_date, vote_average, original_title } = info;
+    const nameSerie = original_title.split(' ').join('-').toLowerCase();
 
     return (
         <Link to={`/series/${id}/${nameSerie}`} className='cursor-pointer h-auto bg-[#1a1a1a] w-full rounded-b mb-2  hover:scale-105 duration-300' id={movieId}>

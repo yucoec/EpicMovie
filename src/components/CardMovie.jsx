@@ -17,8 +17,8 @@ export function CardMovie({ id, category, calidad }) {
         return null;
     }
 
-    const { id: movieId, poster_path, title, release_date, vote_average } = info;
-    const nameMovie = title.split(' ').join('-').toLowerCase();
+    const { id: movieId, poster_path, title, release_date, vote_average, original_title } = info;
+    const nameMovie = original_title.split(' ').join('-').toLowerCase();
 
     return (
         <Link to={`/${id}/${nameMovie}`} className='cursor-pointer h-auto bg-[#1a1a1a] w-full rounded-b mb-2 hover:scale-105 duration-300 relative' id={movieId}>
