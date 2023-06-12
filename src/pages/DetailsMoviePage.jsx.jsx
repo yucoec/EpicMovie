@@ -29,6 +29,8 @@ const DetailsMoviePage = () => {
                 <Helmet>
                     <title>Epic Movie | {details.title}</title>
                     <meta name='description' content={`Details of ${details.title}`} />
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4332686282875056"
+                        crossorigin="anonymous"></script>
                 </Helmet>}
             {details && <MovieDetails details={details} backPage={backPage} category={category} movieLinks={movieLinks} />}
         </>

@@ -23,6 +23,8 @@ const DetailsSeriePage = () => {
                 <Helmet>
                     <title>{`Epic Movie | ${details.name}`}</title>
                     <meta name='description' content={`Details of ${details.name}`} />
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4332686282875056"
+                        crossorigin="anonymous"></script>
                 </Helmet>}
             {details && <SerieDetails details={details} backPage={backPage} category={category} />}
         </>
