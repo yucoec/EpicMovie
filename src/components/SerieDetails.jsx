@@ -1,11 +1,23 @@
+import { useEffect, useState } from 'react'
 import { AiFillStar } from 'react-icons/ai'
 import { BsArrowLeft } from 'react-icons/bs'
 import { useParams } from 'react-router-dom'
 import imageNotFound from '../assets/imageNotFound.png'
+import { getSerieList } from '../services/getSerieList'
 import SeasonList from './SeasonList'
 
 const SerieDetails = ({ details, backPage }) => {
+    const [serie, setSerie] = useState([]);
     const { id } = useParams()
+
+
+    useEffect(() => {
+        getSerieList().then(data => {
+            data.map(({ seasons }) => {
+                setSerie(seasons)
+            })
+        })
+    }, [])
 
     return (
         <>
@@ -35,7 +47,11 @@ const SerieDetails = ({ details, backPage }) => {
             </section>
 
             <section className='text-white h-full max-w-[1400px] mx-auto'>
-                <SeasonList id={id} season_number="1" name={details.original_name} />
+                {serie.map(({ season_number, id: season_id, episodes }) => {
+                    return (
+                        <SeasonList key={season_id} id={id} season_number={season_number} episodes={episodes} name={details.original_name} />
+                    )
+                })}
             </section>
 
             <div className='flex justify-center my-7 text-white'>

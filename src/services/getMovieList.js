@@ -1,4 +1,3 @@
-
 const jsonUrl = 'https://raw.githubusercontent.com/yucoec/epic-moviesJson/main/epic-movie.json';
 
 export function getMovieList() {
