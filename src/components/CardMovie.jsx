@@ -22,7 +22,7 @@ export function CardMovie({ id, category, calidad }) {
 
     return (
         <Link to={`/${id}/${nameMovie}`} className='cursor-pointer h-auto bg-[#1a1a1a] w-full rounded-b mb-2 hover:scale-105 duration-300 relative' id={movieId}>
-            {poster_path ? <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={`poster de ${title}`} /> : <img src={imageNotFound} alt='img not found' />}
+            {poster_path ? <img className="w-[220px] h-[330px] object-cover" src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={`poster de ${title}`} /> : <img src={imageNotFound} alt='img not found' />}
             <div className='m-1 flex items-center gap-1'>
                 <AiFillStar className='text-yellow-500 w-4' />
                 <p>{vote_average.toFixed(1)}</p>
