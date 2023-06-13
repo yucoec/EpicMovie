@@ -89,7 +89,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                         </div>
                     </div>
 
-                    {movieLinks?.map(({ id, imagenBoton, descarga, online, password, calidad }) => (
+                    {movieLinks?.map(({ id, imagenBoton, descarga, online, password, calidad, watch }) => (
                         <section className='flex items-center flex-col gap-2 min-[482px]:mx-5 px-2' key={id}>
                             <div className='flex gap-2 justify-center flex-col items-center mb-2'>
                                 <p className='flex gap-2 justify-center items-center text-xl py-5'><MdCloudDownload /> {calidad === 'HD' ? 'Descarga 1080p Latino - Ingles' : 'Descarga CAM'}</p>
@@ -106,9 +106,9 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                                 <p>Te recomendamos usar el reproductor VLC Player para que no tengas problemas al reproducir La Peliculas en tu PC o celular.</p>
 
                             </div>
-                            <div className='flex gap-2 justify-center flex-col items-center mb-2'>
-                                <p className=' w-full text-xl py-4 text-center'>Link para ver la pelicula Online:</p>
-                                <a href={online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
+                            <div className='flex gap-2 justify-center flex-col items-center mb-2 w-full'>
+                                <p className=' w-full text-xl py-4 text-center'>Ver la pelicula Online:</p>
+                                {watch === null ? <a href={online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a> : <div className='max-[700px]:w-full min-[912px]:w-[880px] min-[912px]:h-[390px] w-[640px] h-[360px]'><iframe src={watch} width='100%' height='100%' allowFullScreen title={details.title} frameborder="0" /></div>}
                             </div>
                         </section>
                     ))}
