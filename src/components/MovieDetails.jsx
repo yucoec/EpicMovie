@@ -66,7 +66,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                     </div>
                     <div className='min-[482px]:mx-5'>
                         <div className='flex w-full flex-wrap min-[600px]:flex-nowrap px-1'>
-                            {details.poster_path ? <img className='w-24 min-[600px]:static min-[600px]:w-[calc(27.65%-0.125rem)] absolute left-3 top-[35rem] min-[482px]:w-[120px] min-[482px]:left-5 min-[482px]:top-[33rem]' src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title} /> : <img src={imageNotFound} alt='img not found' />}
+                            {details.poster_path ? <img className='w-24 min-[600px]:static min-[600px]:w-[calc(27.65%-0.125rem)] absolute left-3 top-[32rem] min-[482px]:w-[120px] min-[482px]:left-5 min-[482px]:top-[33rem]' src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title} /> : <img src={imageNotFound} alt='img not found' />}
                             <div className='min-[600px]:w-[calc(72.35%-0.125rem)] min-[600px]:ml-2 min-[600px]:h-auto w-[640px] h-[340px]'>
                                 {loading
                                     ? (
@@ -95,10 +95,11 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                                 <div className='flex gap-2 justify-center flex-col items-center mb-2'>
                                     {descarga.map(({ quality }, index) => (
                                         <div key={index}>
-                                            {quality.map(({ qualityName, link, btn }, qualityIndex) => {
+                                            {quality.map(({ qualityName, link, btn, peso }, qualityIndex) => {
                                                 return (
-                                                    <div key={qualityIndex} >
-                                                        <p className='flex gap-2 justify-center items-center text-xl py-1'><MdCloudDownload /> {`Descarga ${qualityName}`}</p>
+                                                    <div key={qualityIndex} className='flex flex-col justify-center items-center'>
+                                                        <p className='flex gap-2 justify-center items-center text-xl max-[404px]:text-base py-1'><MdCloudDownload /> {`Descarga ${qualityName}`}</p>
+                                                        {peso && <p className='text-cyan-500'>Peso {peso}</p>}
                                                         <a href={link} target='_blank' rel='noreferrer'>
                                                             <img className='w-96 hover:scale-105 duration-300' src={btn} alt="imagen del boton" />
                                                         </a>
