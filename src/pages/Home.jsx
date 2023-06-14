@@ -21,7 +21,6 @@ export function Home() {
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = movieList.slice(indexOfFirstProduct, indexOfLastProduct);
-    console.log(currentProducts);
     // Función para cambiar de página
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);

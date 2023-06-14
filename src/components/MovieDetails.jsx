@@ -89,35 +89,46 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                         </div>
                     </div>
 
-                    {movieLinks?.map(({ id, imagenBoton, descarga, online, password, calidad }) => (
-                        <section className='flex items-center flex-col gap-2 min-[482px]:mx-5 px-2' key={id}>
-                            <div className='flex gap-2 justify-center flex-col items-center mb-2'>
-                                <p className='flex gap-2 justify-center items-center text-xl py-5'><MdCloudDownload /> {calidad === 'HD' ? 'Descarga 1080p Latino - Ingles' : 'Descarga CAM'}</p>
-                                <a href={descarga} target='_blank' rel='noreferrer'>
-                                    <img className='w-96 hover:scale-105 duration-300' src={imagenBoton} alt="imagen del boton" />
-                                </a>
-                                {password && <><p className='flex gap-2 justify-center text-xl py-3'>Copiar  contraseña</p><div className='flex justify-center  items-center mb-2'>
-                                    <input className='text-black px-3 py-1 focus-visible:outline-none rounded-l-md' id="copyInput" ref={inputRef} value={inputValue} readOnly onClick={() => inputRef.current.select()} />
-                                    <button className='bg-cyan-500 px-3 py-1 rounded-r-md' onClick={handleCopyClick}>Copiar</button>
-                                </div></>}
-                            </div>
-                            <div className='flex gap-2 justify-center items-center mb-2 bg-cyan-500 rounded-md w-1/2 p-1 max-lg:w-2/3 max-[670px]:w-full'>
-                                <img className='w-11 p-1' src={vlcLogo} alt="Logo de vlc reproductor" />
-                                <p>Te recomendamos usar el reproductor VLC Player para que no tengas problemas al reproducir La Peliculas en tu PC o celular.</p>
+                    {movieLinks?.map(({ id, descarga, online, password }) => {
+                        return (
+                            <section className='flex items-center flex-col gap-2 min-[482px]:mx-5 px-2' key={id}>
+                                <div className='flex gap-2 justify-center flex-col items-center mb-2'>
+                                    {descarga.map(({ quality }, index) => (
+                                        <div key={index}>
+                                            {quality.map(({ qualityName, link, btn }, qualityIndex) => {
+                                                return (
+                                                    <div key={qualityIndex} >
+                                                        <p className='flex gap-2 justify-center items-center text-xl py-1'><MdCloudDownload /> {`Descarga ${qualityName}`}</p>
+                                                        <a href={link} target='_blank' rel='noreferrer'>
+                                                            <img className='w-96 hover:scale-105 duration-300' src={btn} alt="imagen del boton" />
+                                                        </a>
+                                                    </div>)
+                                            })}
+                                        </div>
+                                    ))}
+                                    {password && <><p className='flex gap-2 justify-center text-xl py-3'>Copiar  contraseña</p><div className='flex justify-center  items-center mb-2'>
+                                        <input className='text-black px-3 py-1 focus-visible:outline-none rounded-l-md' id="copyInput" ref={inputRef} value={inputValue} readOnly onClick={() => inputRef.current.select()} />
+                                        <button className='bg-cyan-500 px-3 py-1 rounded-r-md' onClick={handleCopyClick}>Copiar</button>
+                                    </div></>}
+                                </div>
+                                <div className='flex gap-2 justify-center items-center mb-2 bg-cyan-500 rounded-md w-1/2 p-1 max-lg:w-2/3 max-[670px]:w-full'>
+                                    <img className='w-11 p-1' src={vlcLogo} alt="Logo de vlc reproductor" />
+                                    <p>Te recomendamos usar el reproductor VLC Player para que no tengas problemas al reproducir La Peliculas en tu PC o celular.</p>
 
-                            </div>
-                            <div className='flex gap-2 justify-center flex-col items-center mb-2'>
-                                <p className=' w-full text-xl py-4 text-center'>Link para ver la pelicula Online:</p>
-                                <a href={online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
-                            </div>
-                        </section>
-                    ))}
+                                </div>
+                                <div className='flex gap-2 justify-center flex-col items-center mb-2'>
+                                    <p className=' w-full text-xl py-4 text-center'>Link para ver la pelicula Online:</p>
+                                    <a href={online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
+                                </div>
+                            </section>
+                        )
+                    })}
 
                     <div className='flex justify-center py-7'>
                         <button className='flex gap-1 items-center hover:border-b-2' onClick={backPage}><BsArrowLeft />Back</button>
                     </div>
-                </div>
-            </section>
+                </div >
+            </section >
         </>
     )
 }
