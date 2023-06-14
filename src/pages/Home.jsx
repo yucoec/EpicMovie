@@ -37,7 +37,7 @@ export function Home() {
                 <div className='w-full max-w-[1400px] mx-auto'>
                     {currentProducts && <ListOfMovies movieList={currentProducts} />}
                     <div className='flex justify-around h-12 items-center'>
-                        {currentProducts && <button className='h-6 hover:border-b-slate-50 hover:border-b-2' onClick={() => handlePageChange(1)}>Descubre más</button>}
+                        {currentProducts && <button className='h-6 hover:border-b-slate-50 hover:border-b-2' onClick={() => handlePageChange(1)}>Siguiente</button>}
                     </div>
                 </div>
             </div>
