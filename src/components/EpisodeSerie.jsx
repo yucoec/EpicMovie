@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Helmet } from "react-helmet"
 import { AiFillPlayCircle, AiFillStar } from "react-icons/ai"
 import { BsArrowLeft } from "react-icons/bs"
 import { useNavigate, useParams } from "react-router-dom"
@@ -60,6 +61,9 @@ const EpisodeSerie = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Epic Movie | {detailsEpisode.name}</title>
+            </Helmet>
             {detailsEpisode ? <section className='bg-center bg-no-repeat bg-cover h-[600px]' style={{
                 backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0)), url('https://image.tmdb.org/t/p/w1280${detailsEpisode.still_path}')`
             }}>
