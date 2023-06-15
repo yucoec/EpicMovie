@@ -13,11 +13,17 @@ const SerieDetails = ({ details, backPage }) => {
 
     useEffect(() => {
         getSerieList().then(data => {
-            data.map(({ seasons }) => {
-                setSerie(seasons)
-            })
-        })
-    }, [])
+            const matchingSerie = data.find(item => {
+                return item.id === parseInt(id);
+            });
+            if (matchingSerie) {
+                setSerie(matchingSerie.seasons);
+            }
+        });
+    }, [id]);
+
+
+
 
     return (
         <>

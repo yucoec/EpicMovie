@@ -23,10 +23,9 @@ const SeasonList = ({ id, season_number, name, episodes }) => {
         <>
             <h3 className="text-center py-3">{`${name} Temporada ${season_number}`}</h3>
             <div key={id} className="text-white grid grid-cols-4 gap-4 min-[482px]:mx-5 justify-items-center justify-center pt-2">
-                {filteredEpisodes.map(({ name, id: idEpisodes, still_path, episode_number }) => {
-
+                {filteredEpisodes.map(({ name, id: idEpisodes, still_path, episode_number, season_number }) => {
                     return (
-                        <Link key={idEpisodes} to={`/${id}/${nameSerie}/${season_number}/${episode_number}`} className="cursor-pointer h-auto bg-transparent w-full rounded mb-2  hover:scale-105 duration-300">
+                        <Link key={idEpisodes} id={idEpisodes} to={`/${id}/${nameSerie}/${season_number}/${episode_number}`} className="cursor-pointer h-auto bg-transparent w-full rounded mb-2  hover:scale-105 duration-300">
                             <figure className="relative">
                                 <span className="absolute hover: bottom-0 left-0 right-[-0.5px] h-14 bg-gradient-to-t from-black/80 via-transparent to-transparent"></span>
                                 <img src={`https://image.tmdb.org/t/p/w500${still_path}`} alt={name} />

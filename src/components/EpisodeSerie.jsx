@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react"
-import { AiFillStar } from "react-icons/ai"
+import { AiFillPlayCircle, AiFillStar } from "react-icons/ai"
 import { BsArrowLeft } from "react-icons/bs"
 import { useNavigate, useParams } from "react-router-dom"
 import { MoonLoader } from "react-spinners"
+import vlcLogo from '../assets/VLC_icon.webp'
 import imageNotFound from '../assets/imageNotFound.png'
 import getEpisodeDetails from "../services/getEpisodeDetails"
 import getEpisodeImages from "../services/getEpisodeImages"
 import getSerieDetails from "../services/getSerieDetails"
+import { getSerieList } from "../services/getSerieList"
+
+
 
 const EpisodeSerie = () => {
     const [detailsEpisode, setDetailsEpisode] = useState(null)
+    const [links, setLinks] = useState([])
     const [images, setImages] = useState([])
     const [poster, setPoster] = useState(null)
     const navigate = useNavigate()
@@ -18,9 +23,29 @@ const EpisodeSerie = () => {
     const backPage = () => {
         navigate(-1)
     }
-
-
     useEffect(() => {
+        getSerieList().then(data => {
+            data.forEach(({ seasons }) => {
+                const matchingSeason = seasons.find(
+                    (seasonObj) => {
+                        return seasonObj.season_number === Number(season)
+                    }
+                );
+
+                if (matchingSeason) {
+                    const matchingEpisode = matchingSeason.episodes.find(
+                        (episodeObj) => {
+                            return episodeObj.episode_number === Number(episode)
+                        }
+                    );
+
+                    if (matchingEpisode) {
+                        setLinks(matchingEpisode);
+                    }
+                }
+            });
+
+        });
         getSerieDetails(id, category).then(res => {
             setPoster(res.poster_path)
         })
@@ -57,30 +82,23 @@ const EpisodeSerie = () => {
                         </div>
                     </div>
 
-                    {/* {movieLinks?.map(({ id, imagenBoton, descarga, online, password, calidad }) => (
-                        <section className='flex items-center flex-col gap-2 min-[482px]:mx-5 px-2' key={id}>
-                            <div className='flex gap-2 justify-center flex-col items-center mb-2'>
-                                <p className='flex gap-2 justify-center items-center text-xl py-5'><MdCloudDownload /> {calidad === 'HD' ? 'Descarga 1080p Latino - Ingles' : 'Descarga CAM'}</p>
-                                <a href={descarga} target='_blank' rel='noreferrer'>
-                                    <img className='w-96 hover:scale-105 duration-300' src={imagenBoton} alt="imagen del boton" />
-                                </a>
-                                {password && <><p className='flex gap-2 justify-center text-xl py-3'>Copiar  contraseña</p><div className='flex justify-center  items-center mb-2'>
-                                    <input className='text-black px-3 py-1 focus-visible:outline-none rounded-l-md' id="copyInput" ref={inputRef} value={inputValue} readOnly onClick={() => inputRef.current.select()} />
-                                    <button className='bg-cyan-500 px-3 py-1 rounded-r-md' onClick={handleCopyClick}>Copiar</button>
-                                </div></>}
-                            </div>
-                            <div className='flex gap-2 justify-center items-center mb-2 bg-cyan-500 rounded-md w-1/2 p-1 max-lg:w-2/3 max-[670px]:w-full'>
-                                <img className='w-11 p-1' src={vlcLogo} alt="Logo de vlc reproductor" />
-                                <p>Te recomendamos usar el reproductor VLC Player para que no tengas problemas al reproducir La Peliculas en tu PC o celular.</p>
 
-                            </div>
-                            <div className='flex gap-2 justify-center flex-col items-center mb-2'>
-                                <p className=' w-full text-xl py-4 text-center'>Link para ver la pelicula Online:</p>
-                                <a href={online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
-                            </div>
-                        </section>
-                    ))} */}
+                    {links && <section className='flex items-center flex-col gap-2 min-[482px]:mx-5 px-2' key={links.id} id={links.id}>
+                        <div className='flex gap-2 justify-center flex-col items-center mb-2'>
+                            <a href={links.descarga} target='_blank' rel='noreferrer'>
+                                <img className='w-96 hover:scale-105 duration-300' src={links.btn} alt="imagen del boton" />
+                            </a>
+                        </div>
+                        <div className='flex gap-2 justify-center items-center mb-2 bg-cyan-500 rounded-md w-1/2 p-1 max-lg:w-2/3 max-[670px]:w-full'>
+                            <img className='w-11 p-1' src={vlcLogo} alt="Logo de vlc reproductor" />
+                            <p>Te recomendamos usar el reproductor VLC Player para que no tengas problemas al reproducir La Peliculas en tu PC o celular.</p>
 
+                        </div>
+                        <div className='flex gap-2 justify-center flex-col items-center mb-2 w-full'>
+                            <p className=' w-full text-xl py-4 text-center'>Ver la pelicula Online:</p>
+                            <a href={links.online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
+                        </div>
+                    </section>}
                     <div className='flex justify-center py-7'>
                         <button className='flex gap-1 items-center hover:border-b-2' onClick={backPage}><BsArrowLeft />Back</button>
                     </div>
