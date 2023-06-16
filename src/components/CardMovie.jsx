@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import imageNotFound from '../assets/imageNotFound.png';
 import { getInfoMovie } from "../services/getInfoMovie";
 
-export function CardMovie({ id, category, calidad }) {
+export function CardMovie({ id, category, calidad, name }) {
     const [info, setInfo] = useState(null)
 
     useEffect(() => {
@@ -28,7 +28,7 @@ export function CardMovie({ id, category, calidad }) {
                 <p>{vote_average.toFixed(1)}</p>
             </div>
             <div className='h-10 p-2 leading-4 text-ellipsis overflow-hidden block '>
-                <span className=' whitespace-nowrap text-inherit'>{title}</span>
+                <span className=' whitespace-nowrap text-inherit'>{name}</span>
             </div>
             <div className='my-5'>
                 <p className='p-2'>{release_date.split('-')[0]}</p>
