@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { Helmet } from "react-helmet-async"
-import { AiFillPlayCircle, AiFillStar } from "react-icons/ai"
-import { BsArrowLeft } from "react-icons/bs"
+import { AiFillPlayCircle, AiFillStar, AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai"
 import { MdCloudDownload } from "react-icons/md"
-import { useNavigate, useParams } from "react-router-dom"
+import { TfiMenuAlt } from "react-icons/tfi"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { MoonLoader } from "react-spinners"
 import vlcLogo from '../assets/VLC_icon.webp'
 import imageNotFound from '../assets/imageNotFound.png'
+import { useChangeEpisodes } from "../hooks/useChangeEpisodes"
 import getEpisodeDetails from "../services/getEpisodeDetails"
 import getEpisodeImages from "../services/getEpisodeImages"
 import getSerieDetails from "../services/getSerieDetails"
@@ -22,9 +23,10 @@ const EpisodeSerie = () => {
     const navigate = useNavigate()
     const { id, season, episode, title } = useParams()
     const category = 'tv'
-    const backPage = () => {
-        navigate(`/series/${id}/${title}`)
-    }
+    const { prevEpisode, nextEpisode, totalEpisodes } = useChangeEpisodes({ id, season, episode })
+
+    console.log(nextEpisode);
+
     useEffect(() => {
         getSerieList().then(data => {
             data.forEach(({ seasons }) => {
@@ -107,8 +109,24 @@ const EpisodeSerie = () => {
                                 <a href={links.online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
                             </div>
                         </section>}
-                        <div className='flex justify-center py-7'>
-                            <button className='flex gap-1 items-center hover:border-b-2' onClick={backPage}><BsArrowLeft />Back</button>
+                        <div className='flex justify-between py-7 max-w-[1400px] mx-5'>
+                            {prevEpisode ? (
+                                <Link to={`/${id}/${title}/${season}/${prevEpisode.episode_number}`} className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center">
+                                    <AiOutlineArrowLeft className="max-[410px]:text-2xl" /> <p className="max-[410px]:hidden">Anterior Capítulo</p>
+                                </Link>
+                            ) : <div className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center opacity-0">
+                                <AiOutlineArrowLeft className="max-[410px] text-2xl" />
+                                <p className="max-[410px]:hidden">Anterior Capítulo</p>
+                            </div>}
+                            <Link to={`/series/${id}/${title}`} className="text-white bg-cyan-500 hover:scale-105 shadow-cyan-500 duration-300 rounded-full p-4"><TfiMenuAlt /></Link>
+                            {nextEpisode ? (
+                                <Link to={`/${id}/${title}/${season}/${nextEpisode.episode_number}`} className={`text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center ${nextEpisode.episode_number === totalEpisodes ? 'invisible' : 'visible'}`}>
+                                    <p className="max-[410px]:hidden">Siguiente Capítulo</p> <AiOutlineArrowRight className="max-[410px]:text-2xl" />
+                                </Link>
+
+                            ) : <div className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center">
+                                <p className="max-[410px]:hidden">Siguiente Capítulo</p> <AiOutlineArrowRight className="max-[410px]:text-2xl" />
+                            </div>}
                         </div>
                     </div>
                 </section> : (

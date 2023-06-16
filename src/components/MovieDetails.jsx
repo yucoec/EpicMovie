@@ -65,7 +65,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                                             <MoonLoader color='#fff' loading={loading} size={120} speedMultiplier={2} />
                                         </div>
                                     )
-                                    : video ? <Youtube opts={opts} videoId={video} style={{ width: '100%', height: '100%' }} /> : <img className='min-[600px]:ml-2' src={videoNotFound} alt='img not found' />}
+                                    : video && video !== 'No se encontraron videos para esta pelicula' ? <Youtube opts={opts} videoId={video} style={{ width: '100%', height: '100%' }} /> : <img className='min-[600px]:ml-2 h-full object-cover' src={videoNotFound} alt='img not found' />}
                             </div>
                         </div>
                         <div className='pl-[calc(95px+1rem)] min-[600px]:pl-0 min-[482px]:pl-[calc(120px+1rem)] my-2'>
