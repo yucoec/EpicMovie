@@ -27,7 +27,7 @@ const SerieDetails = ({ details, backPage }) => {
 
     return (
         <>
-            <section className='bg-center bg-no-repeat bg-cover h-[600px]' style={{
+            <section className='bg-center bg-no-repeat bg-cover' style={{
                 backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0)), url('https://image.tmdb.org/t/p/w1280${details.backdrop_path}')`
             }}>
                 <div className='text-white h-full max-w-[1400px] mx-auto'>
@@ -37,16 +37,16 @@ const SerieDetails = ({ details, backPage }) => {
                         <p className='text-[rgba(255,255,255,.7)] text-sm mb-2 flex  items-center'>{details.first_air_date} <AiFillStar className='text-yellow-400 w-4 mx-1' />{details.vote_average.toFixed(1)}</p>
                     </div>
                     <div className='flex min-[482px]:mx-5 mx-2 py-3'>
-                        <div className=''>
-                            {details.poster_path ? <img className='rounded-sm' src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title} /> : <img src={imageNotFound} alt='img not found' />}
+                        <div>
+                            {details.poster_path ? <img className='rounded-sm w-24 min-[482px]:w-[120px] min-[1000px]:max-w-full min-[1000px]:w-auto max-w-fit' src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title} /> : <img src={imageNotFound} alt='img not found' />}
                         </div>
-                        <section className='mx-3'>
+                        <section className='mx-3 '>
                             <div className='flex gap-1 flex-wrap mb-2'>
                                 {details.genres.map(({ id, name }) => (
                                     <span className='rounded-2xl border-[rgba(255,255,255,.7)] p-1 border-[1px] text-sm' key={id}>{name}</span>
                                 ))}
                             </div>
-                            <p className='text-sm text-ellipsis min-[482px]:text-base'>{details.overview}</p>
+                            <p className='text-sm text-ellipsis min-[482px]:text-base overflow-auto max-h-28'>{details.overview}</p>
                         </section>
                     </div>
                 </div>

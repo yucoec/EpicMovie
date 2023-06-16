@@ -76,14 +76,14 @@ const EpisodeSerie = () => {
                             <p className='text-[rgba(255,255,255,.7)] text-sm mb-2 flex  items-center'>{detailsEpisode.air_date} · {detailsEpisode.runtime + ' min'} ·  <AiFillStar className='text-yellow-400 w-4 mx-1' />{detailsEpisode.vote_average.toFixed(1)}</p>
                         </div>
                         <div className='min-[482px]:mx-5'>
-                            <div className='flex w-full flex-wrap min-[600px]:flex-nowrap px-1'>
-                                {poster ? <img className='w-24 h-36 object-cover min-[600px]:static min-[600px]:w-[calc(27.65%-0.125rem)] min-[600px]:h-auto absolute left-3 top-[35rem] min-[482px]:w-[120px] min-[482px]:h-44 min-[482px]:left-5 min-[482px]:top-[33rem]' src={`https://image.tmdb.org/t/p/w500${poster}`} alt={detailsEpisode.name} /> : <img src={imageNotFound} alt='img not found' />}
+                            <div className='flex w-full flex-wrap min-[600px]:flex-nowrap px-1 relative'>
+                                {poster ? <img className='w-24 h-36 object-cover min-[600px]:static min-[600px]:w-[calc(27.65%-0.125rem)] min-[600px]:h-auto absolute top-[350px] min-[482px]:w-[120px]' src={`https://image.tmdb.org/t/p/w500${poster}`} alt={detailsEpisode.name} /> : <img src={imageNotFound} alt='img not found' />}
                                 <div className='min-[600px]:w-[calc(72.35%-0.125rem)] min-[600px]:ml-2 min-[600px]:h-auto w-[640px] h-[340px]'>
-                                    {images && images[0] ? < img className='min-[600px]:ml-2' src={`https://image.tmdb.org/t/p/w1280${images[0].file_path}`} alt={detailsEpisode.name} /> : <img className='min-[600px]:ml-2' src={imageNotFound} alt='img not found' />}
+                                    {images && images[0] ? < img className='min-[600px]:ml-2 h-full object-cover' src={`https://image.tmdb.org/t/p/w1280${images[0].file_path}`} alt={detailsEpisode.name} /> : <img className='min-[600px]:ml-2 h-full object-cover' src={imageNotFound} alt='img not found' />}
                                 </div>
                             </div>
                             <div className='pl-[calc(95px+1rem)] min-[600px]:pl-0 min-[482px]:pl-[calc(120px+1rem)] my-2'>
-                                <section className='mx-2'>
+                                <section className='mx-2 overflow-auto max-h-28'>
                                     <p className='text-sm text-ellipsis min-[482px]:text-base'>{detailsEpisode.overview}</p>
                                 </section>
                             </div>

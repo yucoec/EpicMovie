@@ -75,7 +75,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                                         <span className='rounded-2xl border-[rgba(255,255,255,.7)] p-1 border-[1px] text-sm' key={id}>{name}</span>
                                     ))}
                                 </div>
-                                <p className='text-sm text-ellipsis min-[482px]:text-base'>{details.overview}</p>
+                                <p className='text-sm text-ellipsis min-[482px]:text-base overflow-auto max-h-28'>{details.overview}</p>
                             </section>
                         </div>
                     </div>
