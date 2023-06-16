@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react'
-import { Helmet } from 'react-helmet-async'
 import { AiFillPlayCircle, AiFillStar } from 'react-icons/ai'
 import { BsArrowLeft } from 'react-icons/bs'
 import { MdCloudDownload } from 'react-icons/md'
@@ -43,18 +42,10 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
             });
     };
 
-    const currentUrl = window.location.href;
+
 
     return (
         <>
-            <Helmet>
-                <title>Epic Movie | {details.title}</title>
-                <meta property="og:image" content={`https://image.tmdb.org/t/p/w1280${details.backdrop_path}`} />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content={details.title} />
-                <meta property="og:image" content={`https://image.tmdb.org/t/p/w1280${details.backdrop_path}`} />
-                <meta property="og:url" content={currentUrl} />
-            </Helmet>
             <section className='bg-center bg-no-repeat bg-cover h-[600px]' style={{
                 backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0)), url('https://image.tmdb.org/t/p/w1280${details.backdrop_path}')`
             }}>
