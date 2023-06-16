@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { useParams } from 'react-router-dom'
 import { ListOfMovies } from '../components/ListOfMovies'
 import getMovieSearch from '../services/getMovieSearch'
@@ -18,8 +18,6 @@ const SearchedMovies = () => {
             <Helmet>
                 <title>Search of {keyword}</title>
                 <meta name='description' content={`Search of ${keyword}`} />
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4332686282875056"
-                    crossorigin="anonymous"></script>
             </Helmet>
             {movieList &&
                 <div className='bg-black text-white h-full max-w-[1200px] mx-auto'>

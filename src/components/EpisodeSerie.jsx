@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet-async"
 import { AiFillPlayCircle, AiFillStar } from "react-icons/ai"
 import { BsArrowLeft } from "react-icons/bs"
 import { MdCloudDownload } from "react-icons/md"

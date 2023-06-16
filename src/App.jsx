@@ -1,3 +1,4 @@
+import { HelmetProvider } from 'react-helmet-async'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import EpiModal from './components/EpiModal'
 import EpisodeSerie from './components/EpisodeSerie'
@@ -12,19 +13,21 @@ import { Series } from './pages/Series'
 function App() {
 
   return (
-    <Router>
-      <Header />
-      <EpiModal />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path='/series' element={<Series />} />
-        <Route path='/:id/:title' element={<DetailsMoviePage />} />
-        <Route path='/list/:page' element={<List />} />
-        <Route path='/series/:id/:title' element={<DetailsSeriePage />} />
-        <Route path='/:id/:title/:season/:episode' element={<EpisodeSerie />} />
-        <Route path='/search/:keyword' element={<SearchedMovies />} />
-      </Routes>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <Header />
+        <EpiModal />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path='/series' element={<Series />} />
+          <Route path='/:id/:title' element={<DetailsMoviePage />} />
+          <Route path='/list/:page' element={<List />} />
+          <Route path='/series/:id/:title' element={<DetailsSeriePage />} />
+          <Route path='/:id/:title/:season/:episode' element={<EpisodeSerie />} />
+          <Route path='/search/:keyword' element={<SearchedMovies />} />
+        </Routes>
+      </Router>
+    </HelmetProvider>
   )
 }
 

@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { AiFillPlayCircle, AiFillStar } from 'react-icons/ai'
 import { BsArrowLeft } from 'react-icons/bs'
 import { MdCloudDownload } from 'react-icons/md'
@@ -48,8 +48,8 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
     return (
         <>
             <Helmet>
-                <meta property="og:image" content={`https://image.tmdb.org/t/p/w1280${details.backdrop_path}`} />
                 <title>Epic Movie | {details.title}</title>
+                <meta property="og:image" content={`https://image.tmdb.org/t/p/w1280${details.backdrop_path}`} />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content={details.title} />
                 <meta property="og:image" content={`https://image.tmdb.org/t/p/w1280${details.backdrop_path}`} />
