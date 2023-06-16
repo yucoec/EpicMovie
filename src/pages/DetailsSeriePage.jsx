@@ -10,7 +10,7 @@ const DetailsSeriePage = () => {
     const navigate = useNavigate()
     const category = 'tv'
     const backPage = () => {
-        navigate(-1)
+        navigate('/series')
     }
 
     useEffect(() => {

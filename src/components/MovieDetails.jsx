@@ -56,8 +56,8 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                         <p className='text-[rgba(255,255,255,.7)] text-sm mb-2 flex  items-center'>{details.release_date} · {horas + 'h ' + minutosRestantes + ' min'} ·  <AiFillStar className='text-yellow-400 w-4 mx-1' />{details.vote_average.toFixed(1)}</p>
                     </div>
                     <div className='min-[482px]:mx-5'>
-                        <div className='flex w-full flex-wrap min-[600px]:flex-nowrap px-1'>
-                            {details.poster_path ? <img className='w-24 min-[600px]:static min-[600px]:w-[calc(27.65%-0.125rem)] absolute left-3 top-[32rem] min-[482px]:w-[120px] min-[482px]:left-5 min-[482px]:top-[33rem]' src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title} /> : <img src={imageNotFound} alt='img not found' />}
+                        <div className='flex w-full flex-wrap min-[600px]:flex-nowrap px-1 relative'>
+                            {details.poster_path ? <img className='w-24 min-[600px]:static min-[600px]:w-[calc(27.65%-0.125rem)] absolute top-[350px] min-[482px]:w-[120px]' src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title} /> : <img src={imageNotFound} alt='img not found' />}
                             <div className='min-[600px]:w-[calc(72.35%-0.125rem)] min-[600px]:ml-2 min-[600px]:h-auto w-[640px] h-[340px]'>
                                 {loading
                                     ? (

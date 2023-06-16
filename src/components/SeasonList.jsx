@@ -21,8 +21,8 @@ const SeasonList = ({ id, season_number, name, episodes }) => {
 
     return (
         <>
-            <h3 className="text-center py-3">{`${name} Temporada ${season_number}`}</h3>
-            <div key={id} className="text-white grid grid-cols-4 gap-4 min-[482px]:mx-5 justify-items-center justify-center pt-2">
+            <h3 className="text-center py-3 text-xl">{`${name} Temporada ${season_number}`}</h3>
+            <div key={id} className="text-white max-[572px]:px-2 grid grid-cols-[repeat(auto-fit,215px)] max-[572px]:grid-cols-none gap-4 min-[482px]:mx-5 justify-items-center justify-center pt-2">
                 {filteredEpisodes.map(({ name, id: idEpisodes, still_path, episode_number, season_number }) => {
                     return (
                         <Link key={idEpisodes} id={idEpisodes} to={`/${id}/${nameSerie}/${season_number}/${episode_number}`} className="cursor-pointer h-auto bg-transparent w-full rounded mb-2  hover:scale-105 duration-300">

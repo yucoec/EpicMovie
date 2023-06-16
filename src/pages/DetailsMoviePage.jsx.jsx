@@ -12,7 +12,7 @@ const DetailsMoviePage = () => {
     const navigate = useNavigate()
     const category = 'movie'
     const backPage = () => {
-        navigate(-1)
+        navigate('/')
     }
 
     useEffect(() => {
