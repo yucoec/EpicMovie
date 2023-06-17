@@ -8,6 +8,7 @@ import Youtube from 'react-youtube'
 import vlcLogo from '../assets/VLC_icon.webp'
 import imageNotFound from '../assets/imageNotFound.png'
 import videoNotFound from '../assets/videoNotFound.png'
+import winrarLogo from '../assets/winrar.webp'
 import { useMovieDetails } from '../hooks/useMovieDetails'
 
 const MovieDetails = ({ details, backPage, movieLinks }) => {
@@ -101,7 +102,11 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                                     {password && <><p className='flex gap-2 justify-center text-xl py-3'>Copiar  contraseña</p><div className='flex justify-center  items-center mb-2'>
                                         <input className='text-black px-3 py-1 focus-visible:outline-none rounded-l-md' id="copyInput" ref={inputRef} value={inputValue} readOnly onClick={() => inputRef.current.select()} />
                                         <button className='bg-cyan-500 px-3 py-1 rounded-r-md' onClick={handleCopyClick}>Copiar</button>
-                                    </div></>}
+                                    </div>
+                                        <a href="https://www.winrar.es/descargas" target="_blank" rel="noopener noreferrer" className='flex gap-2 justify-center items-center mb-2 bg-cyan-500 rounded-md w-full p-1'>
+                                            <img className='w-11 p-1' src={winrarLogo} alt="Logo de winrar" />
+                                            <p>Descarga RAR para que puedas descomprimir el archivo</p>
+                                        </a></>}
                                 </div>
                                 <div className='flex gap-2 justify-center items-center mb-2 bg-cyan-500 rounded-md w-1/2 p-1 max-lg:w-2/3 max-[670px]:w-full'>
                                     <img className='w-11 p-1' src={vlcLogo} alt="Logo de vlc reproductor" />
@@ -112,9 +117,14 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                                     <p className=' w-full text-xl py-4 text-center'>Link para ver la pelicula Online:</p>
                                     <a href={online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
                                 </div>
+                                <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en pc</p>
+                                <iframe src='https://drive.google.com/file/d/1eAfAlz6fexwL6B_I1AUP7pt0eeSH1B1f/preview' className='w-[720px] h-[480px] max-lg:w-[820px] max-lg:h-[500px] max-[870px]:w-full max-[670px]:h-[350px]' />
+                                <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en celular</p>
+                                <iframe src='https://drive.google.com/file/d/19zOkFYUcf6m7Wd7hEN1FQP0zLzUMhSp5/preview' className='w-[720px] h-[480px] max-lg:w-[820px] max-lg:h-[500px] max-[870px]:w-full max-[670px]:h-[350px]' />
                             </section>
                         )
                     })}
+
 
                     <div className='flex justify-center py-7'>
                         <button className='flex gap-1 items-center hover:border-b-2' onClick={backPage}><BsArrowLeft />Back</button>
