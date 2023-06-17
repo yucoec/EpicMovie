@@ -24,9 +24,6 @@ export function useChangeEpisodes({ id, season, episode }) {
 
         prevEpisode = prevIndex >= 0 ? episodes[prevIndex] : null;
         nextEpisode = nextIndex < episodes.length ? episodes[nextIndex] : null;
-
-        // Resto del código...
     }
-    console.log(currentIndex);
     return { prevEpisode, nextEpisode, totalEpisodes }
 }
