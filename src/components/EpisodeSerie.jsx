@@ -85,7 +85,7 @@ const EpisodeSerie = () => {
                                 </div>
                             </div>
                             <div className='pl-[calc(95px+1rem)] min-[600px]:pl-0 min-[482px]:pl-[calc(120px+1rem)] my-2'>
-                                <section className='mx-2 overflow-auto max-h-28'>
+                                <section className='mx-2 overflow-auto max-h-36'>
                                     <p className='text-sm text-ellipsis min-[482px]:text-base'>{detailsEpisode.overview}</p>
                                 </section>
                             </div>
@@ -94,7 +94,7 @@ const EpisodeSerie = () => {
 
                         {links && <section className='flex items-center flex-col gap-2 min-[482px]:mx-5 px-2' key={links.id} id={links.id}>
                             <div className='flex gap-2 justify-center flex-col items-center mb-2'>
-                                <p className='flex gap-2 justify-center items-center text-xl max-[404px]:text-base py-1'><MdCloudDownload /> Descargar {season + "x" + episode}</p>
+                                <p className='flex gap-2 justify-center items-center text-2xl py-1'><MdCloudDownload /> Descargar {season + "x" + episode}</p>
                                 <a href={links.descarga} target='_blank' rel='noreferrer'>
                                     <img className='w-96 hover:scale-105 duration-300' src={links.btn} alt="imagen del boton" />
                                 </a>
@@ -111,21 +111,23 @@ const EpisodeSerie = () => {
                         </section>}
                         <div className='flex justify-between py-7 max-w-[1400px] mx-5'>
                             {prevEpisode ? (
-                                <Link to={`/${id}/${title}/${season}/${prevEpisode.episode_number}`} className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center">
-                                    <AiOutlineArrowLeft className="max-[410px]:text-2xl" /> <p className="max-[410px]:hidden">Anterior Capítulo</p>
+                                <Link to={`/${id}/${title}/${season}/${prevEpisode.episode_number}`} className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center max-[467px]:rounded-full max-[467px]:px-3">
+                                    <AiOutlineArrowLeft className="max-[467px]:text-2xl" /> <p className="max-[467px]:hidden">Anterior Capítulo</p>
                                 </Link>
                             ) : <div className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center opacity-0">
-                                <AiOutlineArrowLeft className="max-[410px] text-2xl" />
-                                <p className="max-[410px]:hidden">Anterior Capítulo</p>
+                                <AiOutlineArrowLeft className="max-[467px] text-2xl" />
+                                <p className="max-[467px]:hidden">Anterior Capítulo</p>
                             </div>}
+
                             <Link to={`/series/${id}/${title}`} className="text-white bg-cyan-500 hover:scale-105 shadow-cyan-500 duration-300 rounded-full p-4"><TfiMenuAlt /></Link>
+
                             {nextEpisode ? (
-                                <Link to={`/${id}/${title}/${season}/${nextEpisode.episode_number}`} className={`text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center ${nextEpisode.episode_number === totalEpisodes ? 'invisible' : 'visible'}`}>
-                                    <p className="max-[410px]:hidden">Siguiente Capítulo</p> <AiOutlineArrowRight className="max-[410px]:text-2xl" />
+                                <Link to={`/${id}/${title}/${season}/${nextEpisode.episode_number}`} className={`text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center ${nextEpisode.episode_number === totalEpisodes ? 'invisible' : 'visible'} max-[467px]:rounded-full max-[467px]:px-3`}>
+                                    <p className="max-[467px]:hidden">Siguiente Capítulo</p> <AiOutlineArrowRight className="max-[467px]:text-2xl" />
                                 </Link>
 
-                            ) : <div className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center">
-                                <p className="max-[410px]:hidden">Siguiente Capítulo</p> <AiOutlineArrowRight className="max-[410px]:text-2xl" />
+                            ) : <div className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center ">
+                                <p className="max-[467px]:hidden">Siguiente Capítulo</p> <AiOutlineArrowRight className="max-[467px]:text-2xl" />
                             </div>}
                         </div>
                     </div>

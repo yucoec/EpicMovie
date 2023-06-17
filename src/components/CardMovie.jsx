@@ -35,7 +35,7 @@ export function CardMovie({ id, category, calidad, name }) {
             </div>
 
             <div className="absolute right-1 bottom-[155px]">
-                <p className="bg-cyan-500 w-fit p-1 rounded-xl text-sm">{calidad}</p>
+                <p className="bg-cyan-500 w-fit py-1 px-3 rounded-xl text-sm">{calidad}</p>
             </div>
 
         </Link>
