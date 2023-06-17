@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import logo from "../assets/logo.png"
-import Search from "./Search"
+import FormSearch from "./FormSearch"
 
 const Header = () => {
     return (
@@ -9,7 +9,7 @@ const Header = () => {
                 <Link to="/">
                     <img className="w-16" src={logo} alt="logo de epic movie" />
                 </Link>
-                <Search />
+                <FormSearch />
             </div>
         </div>
     )

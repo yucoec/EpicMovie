@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async"
 import { AiFillPlayCircle, AiFillStar, AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai"
 import { MdCloudDownload } from "react-icons/md"
 import { TfiMenuAlt } from "react-icons/tfi"
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { MoonLoader } from "react-spinners"
 import vlcLogo from '../assets/VLC_icon.webp'
 import imageNotFound from '../assets/imageNotFound.png'
@@ -13,19 +13,14 @@ import getEpisodeImages from "../services/getEpisodeImages"
 import getSerieDetails from "../services/getSerieDetails"
 import { getSerieList } from "../services/getSerieList"
 
-
-
 const EpisodeSerie = () => {
     const [detailsEpisode, setDetailsEpisode] = useState(null)
     const [links, setLinks] = useState([])
     const [images, setImages] = useState([])
     const [poster, setPoster] = useState(null)
-    const navigate = useNavigate()
     const { id, season, episode, title } = useParams()
     const category = 'tv'
     const { prevEpisode, nextEpisode, totalEpisodes } = useChangeEpisodes({ id, season, episode })
-
-    console.log(nextEpisode);
 
     useEffect(() => {
         getSerieList().then(data => {
@@ -121,21 +116,31 @@ const EpisodeSerie = () => {
 
                             <Link to={`/series/${id}/${title}`} className="text-white bg-cyan-500 hover:scale-105 shadow-cyan-500 duration-300 rounded-full p-4"><TfiMenuAlt /></Link>
 
-                            {nextEpisode ? (
-                                <Link to={`/${id}/${title}/${season}/${nextEpisode.episode_number}`} className={`text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center ${nextEpisode.episode_number === totalEpisodes ? 'invisible' : 'visible'} max-[467px]:rounded-full max-[467px]:px-3`}>
-                                    <p className="max-[467px]:hidden">Siguiente Capítulo</p> <AiOutlineArrowRight className="max-[467px]:text-2xl" />
+                            {totalEpisodes && nextEpisode && nextEpisode.episode_number !== null ? (
+                                <Link
+                                    to={`/${id}/${title}/${season}/${nextEpisode.episode_number}`}
+                                    className={`text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center ${nextEpisode.episode_number === null ? "invisible" : "visible"
+                                        } max-[467px]:rounded-full max-[467px]:px-3`}
+                                >
+                                    <p className="max-[467px]:hidden">Siguiente Capítulo</p>
+                                    <AiOutlineArrowRight className="max-[467px]:text-2xl" />
                                 </Link>
+                            ) : (
+                                <div className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center invisible">
+                                    <p className="max-[467px]:hidden">Siguiente Capítulo</p>
+                                    <AiOutlineArrowRight className="max-[467px]:text-2xl" />
+                                </div>
+                            )}
 
-                            ) : <div className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center ">
-                                <p className="max-[467px]:hidden">Siguiente Capítulo</p> <AiOutlineArrowRight className="max-[467px]:text-2xl" />
-                            </div>}
+
                         </div>
                     </div>
-                </section> : (
+                </section > : (
                     <div className='flex justify-center items-center h-full'>
                         <MoonLoader color='#fff' size={120} speedMultiplier={2} />
                     </div>
-                )}
+                )
+            }
         </>
     )
 }

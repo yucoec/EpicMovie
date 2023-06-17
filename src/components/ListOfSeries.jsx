@@ -10,8 +10,8 @@ export const ListOfSeries = ({ movieList }) => {
                     crossorigin="anonymous"></script>
             </Helmet>
             <div className='grid gap-4 grid-cols-16 mx-[5px] justify-items-center justify-center pt-2'>
-                {movieList.map(({ id, descarga, online, imagenBoton, calidad, category }) => (
-                    <CardSeries key={id} id={id} descarga={descarga} online={online} imagenBoton={imagenBoton} calidad={calidad} category={category} />
+                {movieList.map(({ id, category }) => (
+                    <CardSeries key={id} id={id} category={category} />
                 ))}
             </div>
         </>

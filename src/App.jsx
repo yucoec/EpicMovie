@@ -7,7 +7,7 @@ import DetailsMoviePage from './pages/DetailsMoviePage.jsx'
 import DetailsSeriePage from './pages/DetailsSeriePage'
 import { Home } from './pages/Home'
 import List from './pages/List'
-import SearchedMovies from './pages/SearchedMovies'
+import Search from './pages/Search'
 import { Series } from './pages/Series'
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
           <Route path='/list/:page' element={<List />} />
           <Route path='/series/:id/:title' element={<DetailsSeriePage />} />
           <Route path='/:id/:title/:season/:episode' element={<EpisodeSerie />} />
-          <Route path='/search/:keyword' element={<SearchedMovies />} />
+          <Route path='/search/:keyword' element={<Search />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>
