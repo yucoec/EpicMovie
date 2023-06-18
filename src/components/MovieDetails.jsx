@@ -11,11 +11,13 @@ import videoNotFound from '../assets/videoNotFound.png'
 import winrarLogo from '../assets/winrar.webp'
 import { useMovieDetails } from '../hooks/useMovieDetails'
 
+
 const MovieDetails = ({ details, backPage, movieLinks }) => {
     const { id } = useParams()
     const [inputValue, setInputValue] = useState('hackstore.ac');
     const inputRef = useRef(null);
     const category = 'movie';
+    const currentUrl = window.location.href;
     const { video, loading } = useMovieDetails({ id, category })
     const opts = {
         height: '100%',
@@ -124,8 +126,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                             </section>
                         )
                     })}
-
-
+                    <div className="fb-comments" data-href={currentUrl} data-width="500" data-numposts="5" data-colorscheme="light"></div>
                     <div className='flex justify-center py-7'>
                         <button className='flex gap-1 items-center hover:border-b-2' onClick={backPage}><BsArrowLeft />Back</button>
                     </div>
