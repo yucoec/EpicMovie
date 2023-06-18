@@ -9,6 +9,7 @@ import vlcLogo from '../assets/VLC_icon.webp'
 import imageNotFound from '../assets/imageNotFound.png'
 import winrarLogo from '../assets/winrar.webp'
 
+import { Comments, FacebookProvider } from "react-facebook"
 import { useChangeEpisodes } from "../hooks/useChangeEpisodes"
 import useEpisodeDetails from "../hooks/useEpisodeDetails"
 
@@ -89,6 +90,11 @@ const EpisodeSerie = () => {
                                 <p className=' w-full text-xl py-4 text-center'>Ver la pelicula Online:</p>
                                 <a href={links.online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
                             </div>
+                            <FacebookProvider appId="703156001573798">
+                                <div id='fb-container' className='w-[720px] max-lg:w-[820px] max-[870px]:w-full'>
+                                    <Comments href={currentUrl} numPosts="5" width="100%" />
+                                </div>
+                            </FacebookProvider>
                             <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en pc</p>
                             <iframe src='https://drive.google.com/file/d/1eAfAlz6fexwL6B_I1AUP7pt0eeSH1B1f/preview' className='w-[720px] h-[480px] max-lg:w-[820px] max-lg:h-[500px] max-[870px]:w-full max-[670px]:h-[350px]' />
                             <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en celular</p>
