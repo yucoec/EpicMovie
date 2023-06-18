@@ -122,7 +122,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                                 </div>
                                 <FacebookProvider appId="703156001573798">
                                     <div id='fb-container' className='w-[720px] max-lg:w-[820px] max-[870px]:w-full'>
-                                        <Comments href={currentUrl} numPosts="5" width="100%" />
+                                        <Comments href={currentUrl} numPosts="5" width="100%" locale="es_ES" />
                                     </div>
                                 </FacebookProvider>
                                 <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en pc</p>
