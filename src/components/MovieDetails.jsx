@@ -118,9 +118,13 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                                     <a href={online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
                                 </div>
                                 <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en pc</p>
-                                <iframe src='https://drive.google.com/file/d/1eAfAlz6fexwL6B_I1AUP7pt0eeSH1B1f/preview' className='w-[720px] h-[480px] max-lg:w-[820px] max-lg:h-[500px] max-[870px]:w-full max-[670px]:h-[350px]' />
+                                <div className='min-[600px]:ml-2 max-[645px]:w-full w-[640px] h-[340px]'>
+                                    <Youtube opts={opts} videoId='L0SDR7yPWRI' style={{ width: '100%', height: '100%' }} />
+                                </div>
                                 <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en celular</p>
-                                <iframe src='https://drive.google.com/file/d/19zOkFYUcf6m7Wd7hEN1FQP0zLzUMhSp5/preview' className='w-[720px] h-[480px] max-lg:w-[820px] max-lg:h-[500px] max-[870px]:w-full max-[670px]:h-[350px]' />
+                                <div className='min-[600px]:ml-2 max-[645px]:w-full w-[640px] h-[340px]'>
+                                    <Youtube opts={opts} videoId='zM5ztYhfzf8' style={{ width: '100%', height: '100%' }} />
+                                </div>
                             </section>
                         )
                     })}

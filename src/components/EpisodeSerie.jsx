@@ -1,60 +1,46 @@
-import { useEffect, useState } from "react"
+import { useRef, useState } from "react"
 import { Helmet } from "react-helmet-async"
 import { AiFillPlayCircle, AiFillStar, AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai"
 import { MdCloudDownload } from "react-icons/md"
 import { TfiMenuAlt } from "react-icons/tfi"
 import { Link, useParams } from "react-router-dom"
 import { MoonLoader } from "react-spinners"
+import Youtube from 'react-youtube'
 import vlcLogo from '../assets/VLC_icon.webp'
 import imageNotFound from '../assets/imageNotFound.png'
+import winrarLogo from '../assets/winrar.webp'
 import { useChangeEpisodes } from "../hooks/useChangeEpisodes"
-import getEpisodeDetails from "../services/getEpisodeDetails"
-import getEpisodeImages from "../services/getEpisodeImages"
-import getSerieDetails from "../services/getSerieDetails"
-import { getSerieList } from "../services/getSerieList"
+import useEpisodeDetails from "../hooks/useEpisodeDetails"
 
 const EpisodeSerie = () => {
-    const [detailsEpisode, setDetailsEpisode] = useState(null)
-    const [links, setLinks] = useState([])
-    const [images, setImages] = useState([])
-    const [poster, setPoster] = useState(null)
+    const [inputValue, setInputValue] = useState('hackstore.ac');
+    const inputRef = useRef(null);
     const { id, season, episode, title } = useParams()
-    const category = 'tv'
     const { prevEpisode, nextEpisode, totalEpisodes } = useChangeEpisodes({ id, season, episode })
+    const { detailsEpisode, links, images, poster } = useEpisodeDetails(id, season, episode)
 
-    useEffect(() => {
-        getSerieList().then(data => {
-            data.forEach(({ seasons }) => {
-                const matchingSeason = seasons.find(
-                    (seasonObj) => {
-                        return seasonObj.season_number === Number(season)
-                    }
-                );
+    const opts = {
+        height: '100%',
+        width: '100%',
+        playerVars: {
+            autoplay: 0
+        }
+    }
 
-                if (matchingSeason) {
-                    const matchingEpisode = matchingSeason.episodes.find(
-                        (episodeObj) => {
-                            return episodeObj.episode_number === Number(episode)
-                        }
-                    );
-
-                    if (matchingEpisode) {
-                        setLinks(matchingEpisode);
-                    }
-                }
+    const handleCopyClick = () => {
+        const inputElement = document.getElementById('copyInput');
+        inputElement.select();
+        navigator.clipboard.writeText(inputElement.value)
+            .then(() => {
+                setInputValue('Contraseña copiada!');
+                setTimeout(() => {
+                    setInputValue('hackstore.ac');
+                }, 1500);
+            })
+            .catch((error) => {
+                console.error('Error al copiar al portapapeles:', error);
             });
-
-        });
-        getSerieDetails(id, category).then(res => {
-            setPoster(res.poster_path)
-        })
-        getEpisodeDetails(id, season, episode).then(res => {
-            setDetailsEpisode(res)
-        })
-        getEpisodeImages(id, season, episode).then(res => {
-            setImages(res.stills)
-        })
-    }, [id, season, episode])
+    };
 
 
     return (
@@ -80,7 +66,7 @@ const EpisodeSerie = () => {
                                 </div>
                             </div>
                             <div className='pl-[calc(95px+1rem)] min-[600px]:pl-0 min-[482px]:pl-[calc(120px+1rem)] my-2'>
-                                <section className='mx-2 overflow-auto max-h-36'>
+                                <section className='mx-2 overflow-auto max-h-36 max-[600px]:h-36'>
                                     <p className='text-sm text-ellipsis min-[482px]:text-base'>{detailsEpisode.overview}</p>
                                 </section>
                             </div>
@@ -94,6 +80,14 @@ const EpisodeSerie = () => {
                                     <img className='w-96 hover:scale-105 duration-300' src={links.btn} alt="imagen del boton" />
                                 </a>
                             </div>
+                            {links.password && <><p className='flex gap-2 justify-center text-xl py-3'>Copiar  contraseña</p><div className='flex justify-center  items-center mb-2'>
+                                <input className='text-black px-3 py-1 focus-visible:outline-none rounded-l-md' id="copyInput" ref={inputRef} value={inputValue} readOnly onClick={() => inputRef.current.select()} />
+                                <button className='bg-cyan-500 px-3 py-1 rounded-r-md' onClick={handleCopyClick}>Copiar</button>
+                            </div>
+                                <a href="https://www.winrar.es/descargas" target="_blank" rel="noopener noreferrer" className='flex gap-2 justify-center items-center mb-2 bg-cyan-500 rounded-md w-1/2 p-1 max-lg:w-2/3 max-[670px]:w-full'>
+                                    <img className='w-11 p-1' src={winrarLogo} alt="Logo de winrar" />
+                                    <p>Descarga RAR para que puedas descomprimir el archivo</p>
+                                </a></>}
                             <div className='flex gap-2 justify-center items-center mb-2 bg-cyan-500 rounded-md w-1/2 p-1 max-lg:w-2/3 max-[670px]:w-full'>
                                 <img className='w-11 p-1' src={vlcLogo} alt="Logo de vlc reproductor" />
                                 <p>Te recomendamos usar el reproductor VLC Player para que no tengas problemas al reproducir La Peliculas en tu PC o celular.</p>
@@ -102,6 +96,14 @@ const EpisodeSerie = () => {
                             <div className='flex gap-2 justify-center flex-col items-center mb-2 w-full'>
                                 <p className=' w-full text-xl py-4 text-center'>Ver la pelicula Online:</p>
                                 <a href={links.online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
+                            </div>
+                            <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en pc</p>
+                            <div className='min-[600px]:ml-2 max-[645px]:w-full w-[640px] h-[340px]'>
+                                <Youtube opts={opts} videoId='L0SDR7yPWRI' style={{ width: '100%', height: '100%' }} />
+                            </div>
+                            <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en celular</p>
+                            <div className='min-[600px]:ml-2 max-[645px]:w-full w-[640px] h-[340px]'>
+                                <Youtube opts={opts} videoId='zM5ztYhfzf8' style={{ width: '100%', height: '100%' }} />
                             </div>
                         </section>}
                         <div className='flex justify-between py-7 max-w-[1400px] mx-5'>
