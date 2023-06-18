@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { Comments, FacebookProvider } from 'react-facebook'
 import { AiFillPlayCircle, AiFillStar } from 'react-icons/ai'
 import { BsArrowLeft } from 'react-icons/bs'
 import { MdCloudDownload } from 'react-icons/md'
@@ -11,13 +12,11 @@ import videoNotFound from '../assets/videoNotFound.png'
 import winrarLogo from '../assets/winrar.webp'
 import { useMovieDetails } from '../hooks/useMovieDetails'
 
-
 const MovieDetails = ({ details, backPage, movieLinks }) => {
     const { id } = useParams()
     const [inputValue, setInputValue] = useState('hackstore.ac');
     const inputRef = useRef(null);
     const category = 'movie';
-    const currentUrl = window.location.href;
     const { video, loading } = useMovieDetails({ id, category })
     const opts = {
         height: '100%',
@@ -26,6 +25,9 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
             autoplay: 0
         }
     }
+    const isLocal = window.location.hostname === 'localhost';
+    const currentUrl = isLocal ? 'https://epic-moviee.vercel.app/' : window.location.href;
+
 
     const horas = Math.floor(details.runtime / 60)
     const minutosRestantes = details.runtime % 60
@@ -44,7 +46,6 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                 console.error('Error al copiar al portapapeles:', error);
             });
     };
-
 
 
     return (
@@ -119,6 +120,11 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                                     <p className=' w-full text-xl py-4 text-center'>Link para ver la pelicula Online:</p>
                                     <a href={online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
                                 </div>
+                                <FacebookProvider appId="703156001573798">
+                                    <div id='fb-container' className='w-[720px] max-lg:w-[820px] max-[870px]:w-full'>
+                                        <Comments href={currentUrl} numPosts="5" width="100%" />
+                                    </div>
+                                </FacebookProvider>
                                 <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en pc</p>
                                 <iframe src='https://drive.google.com/file/d/1eAfAlz6fexwL6B_I1AUP7pt0eeSH1B1f/preview' className='w-[720px] h-[480px] max-lg:w-[820px] max-lg:h-[500px] max-[870px]:w-full max-[670px]:h-[350px]' />
                                 <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en celular</p>
@@ -126,7 +132,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                             </section>
                         )
                     })}
-                    <div className="fb-comments" data-href={currentUrl} data-width="500" data-numposts="5" data-colorscheme="light"></div>
+
                     <div className='flex justify-center py-7'>
                         <button className='flex gap-1 items-center hover:border-b-2' onClick={backPage}><BsArrowLeft />Back</button>
                     </div>
