@@ -5,10 +5,10 @@ import { MdCloudDownload } from "react-icons/md"
 import { TfiMenuAlt } from "react-icons/tfi"
 import { Link, useParams } from "react-router-dom"
 import { MoonLoader } from "react-spinners"
-import Youtube from 'react-youtube'
 import vlcLogo from '../assets/VLC_icon.webp'
 import imageNotFound from '../assets/imageNotFound.png'
 import winrarLogo from '../assets/winrar.webp'
+
 import { useChangeEpisodes } from "../hooks/useChangeEpisodes"
 import useEpisodeDetails from "../hooks/useEpisodeDetails"
 
@@ -18,14 +18,6 @@ const EpisodeSerie = () => {
     const { id, season, episode, title } = useParams()
     const { prevEpisode, nextEpisode, totalEpisodes } = useChangeEpisodes({ id, season, episode })
     const { detailsEpisode, links, images, poster } = useEpisodeDetails(id, season, episode)
-
-    const opts = {
-        height: '100%',
-        width: '100%',
-        playerVars: {
-            autoplay: 0
-        }
-    }
 
     const handleCopyClick = () => {
         const inputElement = document.getElementById('copyInput');
@@ -80,7 +72,7 @@ const EpisodeSerie = () => {
                                     <img className='w-96 hover:scale-105 duration-300' src={links.btn} alt="imagen del boton" />
                                 </a>
                             </div>
-                            {links.password && <><p className='flex gap-2 justify-center text-xl py-3'>Copiar  contraseña</p><div className='flex justify-center  items-center mb-2'>
+                            {links.password === false && <><p className='flex gap-2 justify-center text-xl py-3'>Copiar  contraseña</p><div className='flex justify-center  items-center mb-2'>
                                 <input className='text-black px-3 py-1 focus-visible:outline-none rounded-l-md' id="copyInput" ref={inputRef} value={inputValue} readOnly onClick={() => inputRef.current.select()} />
                                 <button className='bg-cyan-500 px-3 py-1 rounded-r-md' onClick={handleCopyClick}>Copiar</button>
                             </div>
@@ -98,13 +90,9 @@ const EpisodeSerie = () => {
                                 <a href={links.online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
                             </div>
                             <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en pc</p>
-                            <div className='min-[600px]:ml-2 max-[645px]:w-full w-[640px] h-[340px]'>
-                                <Youtube opts={opts} videoId='L0SDR7yPWRI' style={{ width: '100%', height: '100%' }} />
-                            </div>
+                            <iframe src='https://drive.google.com/file/d/1eAfAlz6fexwL6B_I1AUP7pt0eeSH1B1f/preview' className='w-[720px] h-[480px] max-lg:w-[820px] max-lg:h-[500px] max-[870px]:w-full max-[670px]:h-[350px]' />
                             <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en celular</p>
-                            <div className='min-[600px]:ml-2 max-[645px]:w-full w-[640px] h-[340px]'>
-                                <Youtube opts={opts} videoId='zM5ztYhfzf8' style={{ width: '100%', height: '100%' }} />
-                            </div>
+                            <iframe src='https://drive.google.com/file/d/19zOkFYUcf6m7Wd7hEN1FQP0zLzUMhSp5/preview' className='w-[720px] h-[480px] max-lg:w-[820px] max-lg:h-[500px] max-[870px]:w-full max-[670px]:h-[350px]' />
                         </section>}
                         <div className='flex justify-between py-7 max-w-[1400px] mx-5'>
                             {prevEpisode ? (
