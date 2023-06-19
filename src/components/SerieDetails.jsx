@@ -58,7 +58,7 @@ const SerieDetails = ({ details, backPage }) => {
             </section>
 
             <section className='text-white h-full max-w-[1400px] mx-auto'>
-                <div className='mx-5 py-5 relative w-fit'>
+                <div className='min-[482px]:mx-5 mx-2 py-5 relative w-fit'>
                     <select className='w-auto outline-none appearance-none bg-cyan-500 border-gray-300 rounded-md py-3 px-2 pr-10' onChange={(e) => setTemporadaSeleccionada(Number(e.target.value))}>
                         {serie.map(({ season_number }) => (
                             <option key={season_number} value={season_number}>
