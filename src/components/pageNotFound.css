@@ -1,4 +1,4 @@
-*,
+/* *,
 *:before,
 *:after {
     box-sizing: border-box;
@@ -11,7 +11,7 @@
 
 *:focus {
     outline: none !important;
-}
+} */
 
 body,
 html {
@@ -22,7 +22,7 @@ body {
     background: #121214;
 }
 
-main {
+.main-container {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
@@ -36,17 +36,17 @@ main {
     overflow-y: hidden;
 }
 
-main>div {
+.main-container>div {
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-main>div svg {
+.main-container>div svg {
     height: 100%;
 }
 
-main>div:nth-child(1) {
+.main-container>div:nth-child(1) {
     opacity: 0;
     transform: translateZ(1000px);
     -webkit-animation: zoomFadeIn 5000ms cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
@@ -54,110 +54,110 @@ main>div:nth-child(1) {
     transform-origin: center center;
 }
 
-main>div:nth-child(1) .error-1-e {
+.main-container>div:nth-child(1) .error-1-e {
     transform: translateX(-50%);
     -webkit-animation: slideRight 3000ms cubic-bezier(0.215, 0.61, 0.355, 1) -500ms forwards;
     animation: slideRight 3000ms cubic-bezier(0.215, 0.61, 0.355, 1) -500ms forwards;
 }
 
-main>div:nth-child(1) .error-2-r {
+.main-container>div:nth-child(1) .error-2-r {
     transform: translateY(-20%);
     -webkit-animation: slideDown 5000ms cubic-bezier(0.215, 0.61, 0.355, 1) -500ms forwards;
     animation: slideDown 5000ms cubic-bezier(0.215, 0.61, 0.355, 1) -500ms forwards;
 }
 
-main>div:nth-child(1) .error-4-o {
+.main-container>div:nth-child(1) .error-4-o {
     transform: translateX(10%);
     -webkit-animation: slideLeftSmall 3000ms cubic-bezier(0.215, 0.61, 0.355, 1) -300ms forwards;
     animation: slideLeftSmall 3000ms cubic-bezier(0.215, 0.61, 0.355, 1) -300ms forwards;
 }
 
-main>div:nth-child(1) .error-5-r {
+.main-container>div:nth-child(1) .error-5-r {
     transform: translateX(50%);
     -webkit-animation: slideLeft 3000ms cubic-bezier(0.215, 0.61, 0.355, 1) -500ms forwards;
     animation: slideLeft 3000ms cubic-bezier(0.215, 0.61, 0.355, 1) -500ms forwards;
 }
 
-main>div:nth-child(1) .error-2-0 {
+.main-container>div:nth-child(1) .error-2-0 {
     transform: translateY(20%);
     -webkit-animation: slideUp 5000ms cubic-bezier(0.215, 0.61, 0.355, 1) -500ms forwards;
     animation: slideUp 5000ms cubic-bezier(0.215, 0.61, 0.355, 1) -500ms forwards;
 }
 
-main>div:nth-child(1) .error-top {
+.main-container>div:nth-child(1) .error-top {
     transform: scaleX(0);
     transform-origin: 163px 3px;
     -webkit-animation: scaleXIn 4500ms cubic-bezier(0.19, 1, 0.22, 1) 1500ms forwards;
     animation: scaleXIn 4500ms cubic-bezier(0.19, 1, 0.22, 1) 1500ms forwards;
 }
 
-main>div:nth-child(1) .error-left {
+.main-container>div:nth-child(1) .error-left {
     transform: scaleX(0);
     transform-origin: 75px 3px;
     -webkit-animation: scaleXIn 4500ms cubic-bezier(0.19, 1, 0.22, 1) 1500ms forwards;
     animation: scaleXIn 4500ms cubic-bezier(0.19, 1, 0.22, 1) 1500ms forwards;
 }
 
-main>div:nth-child(1) .error-right {
+.main-container>div:nth-child(1) .error-right {
     transform: scaleX(0);
     transform-origin: 250px 3px;
     -webkit-animation: scaleXIn 4500ms cubic-bezier(0.19, 1, 0.22, 1) 1500ms forwards;
     animation: scaleXIn 4500ms cubic-bezier(0.19, 1, 0.22, 1) 1500ms forwards;
 }
 
-main>div:nth-child(2) .quote-top,
-main>div:nth-child(2) .quote-bottom {
+.main-container>div:nth-child(2) .quote-top,
+.main-container>div:nth-child(2) .quote-bottom {
     opacity: 0;
     -webkit-animation: slideUpFadeIn 1500ms cubic-bezier(0.215, 0.61, 0.355, 1) 4750ms forwards;
     animation: slideUpFadeIn 1500ms cubic-bezier(0.215, 0.61, 0.355, 1) 4750ms forwards;
 }
 
-main>div:nth-child(2) .quote-bottom {
+.main-container>div:nth-child(2) .quote-bottom {
     -webkit-animation-delay: 5750ms;
     animation-delay: 5750ms;
 }
 
-main>div:nth-child(3) .link-phrase,
-main>div:nth-child(3) .link-mark {
+.main-container>div:nth-child(3) .link-phrase,
+.main-container>div:nth-child(3) .link-mark {
     opacity: 0;
     -webkit-animation: slideUpFadeIn 1000ms cubic-bezier(0.215, 0.61, 0.355, 1) 6250ms forwards;
     animation: slideUpFadeIn 1000ms cubic-bezier(0.215, 0.61, 0.355, 1) 6250ms forwards;
 }
 
-main>div:nth-child(3) .link-mark {
+.main-container>div:nth-child(3) .link-mark {
     opacity: 0;
     -webkit-animation: fadeIn 1000ms cubic-bezier(0.215, 0.61, 0.355, 1) 6750ms forwards;
     animation: fadeIn 1000ms cubic-bezier(0.215, 0.61, 0.355, 1) 6750ms forwards;
 }
 
-main>div:nth-child(3) a {
+.main-container>div:nth-child(3) a {
     cursor: pointer;
     transition: all 500ms ease-out;
 }
 
-main>div:nth-child(3) a .top use {
+.main-container>div:nth-child(3) a .top use {
     transition: all 150ms ease-out;
 }
 
-main>div:nth-child(3) a:hover,
-main>div:nth-child(3) a:focus {
+.main-container>div:nth-child(3) a:hover,
+.main-container>div:nth-child(3) a:focus {
     -webkit-animation: jitter 225ms ease-in-out 2 forwards;
     animation: jitter 225ms ease-in-out 2 forwards;
 }
 
-main>div:nth-child(3) a:hover .top use,
-main>div:nth-child(3) a:focus .top use {
+.main-container>div:nth-child(3) a:hover .top use,
+.main-container>div:nth-child(3) a:focus .top use {
     fill: white;
 }
 
-main>div:nth-child(3) a:active .top use {
+.main-container>div:nth-child(3) a:active .top use {
     fill: #b30000;
 }
 
 @-moz-document url-prefix() {
 
-    main>div:nth-child(3) a:hover,
-    main>div:nth-child(3) a:focus {
+    .main-container>div:nth-child(3) a:hover,
+    .main-container>div:nth-child(3) a:focus {
         animation: none;
     }
 }

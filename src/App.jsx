@@ -1,8 +1,8 @@
 import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import EpiModal from './components/EpiModal'
 import EpisodeSerie from './components/EpisodeSerie'
 import Header from './components/Header'
+import { PageNotFound } from './components/PageNotFound'
 import DetailsMoviePage from './pages/DetailsMoviePage.jsx'
 import DetailsSeriePage from './pages/DetailsSeriePage'
 import { Home } from './pages/Home'
@@ -16,7 +16,6 @@ function App() {
     <HelmetProvider>
       <BrowserRouter>
         <Header />
-        <EpiModal />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path='/series' element={<Series />} />
@@ -25,6 +24,7 @@ function App() {
           <Route path='/series/:id/:title' element={<DetailsSeriePage />} />
           <Route path='/:id/:title/:season/:episode' element={<EpisodeSerie />} />
           <Route path='/search/:keyword' element={<Search />} />
+          <Route path='*' element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>

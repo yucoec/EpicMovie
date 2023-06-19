@@ -4,7 +4,7 @@ export function PageNotFound() {
     return (
         <>
             {/* Make sure to change 'href' attribute (Go Home) in Line 110 */}
-            <main>
+            <main className='main-container'>
                 <div>
                     <svg
                         width="636px"

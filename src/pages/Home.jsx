@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import movieicon from '../assets/movie.svg';
 import tvicon from '../assets/tv.svg';
+import EpiModal from "../components/EpiModal";
 import { ListOfMovies } from "../components/ListOfMovies";
 import { getMovieList } from "../services/getMovieList";
 
@@ -42,6 +43,7 @@ export function Home() {
                     </div>
                 </div>
             </div>
+            <EpiModal />
         </>
     )
 }

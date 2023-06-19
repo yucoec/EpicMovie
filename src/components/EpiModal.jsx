@@ -21,7 +21,7 @@ const EpiModal = () => {
     return (
         <Modal isOpen={modalOpen} className="bg-[#202225] drop-shadow-2xl border-none w-3/4 max-w-[330px] rounded-lg p-8" overlayClassName="fixed inset-0 flex items-center justify-center bg-opacity-50 backdrop-filter backdrop-blur-sm" onRequestClose={closeModal}>
             <button className="absolute top-2 right-2" onClick={closeModal}><AiOutlineCloseCircle className="text-white text-2xl" /></button>
-            <a href="https://t.me/EpicMoviee" target="_blank" rel="noopener noreferrer">
+            <a href="https://t.me/EpicMoviee" target="_blank" rel="preload">
                 <img src={QrCode} alt="Epic Movie" />
             </a>
             <p className="py-2 text-white"> Telegram (aquí iré publicando cada que se agregue una película o serie) tambien</p>
