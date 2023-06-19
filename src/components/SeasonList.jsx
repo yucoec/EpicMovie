@@ -17,7 +17,7 @@ const SeasonList = ({ id, season_number, name, episodes }) => {
     });
 
 
-    const nameSerie = name.split(' ').join('-').toLowerCase();
+    const nameSerie = name.split(' ').join('-')
 
     return (
         <>

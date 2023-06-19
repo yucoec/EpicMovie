@@ -3,13 +3,14 @@ import { Helmet } from "react-helmet-async"
 import { AiFillPlayCircle, AiFillStar, AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai"
 import { MdCloudDownload } from "react-icons/md"
 import { TfiMenuAlt } from "react-icons/tfi"
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { MoonLoader } from "react-spinners"
 import vlcLogo from '../assets/VLC_icon.webp'
 import imageNotFound from '../assets/imageNotFound.png'
 import winrarLogo from '../assets/winrar.webp'
 
 import { Comments, FacebookProvider } from "react-facebook"
+import { Link } from "react-router-dom"
 import { useChangeEpisodes } from "../hooks/useChangeEpisodes"
 import useEpisodeDetails from "../hooks/useEpisodeDetails"
 
@@ -71,7 +72,7 @@ const EpisodeSerie = () => {
 
                         {links && <section className='flex items-center flex-col gap-2 min-[482px]:mx-5 px-2' key={links.id} id={links.id}>
                             <div className='flex gap-2 justify-center flex-col items-center mb-2'>
-                                <p className='flex gap-2 justify-center items-center text-2xl py-1'><MdCloudDownload /> Descargar {season + "x" + episode}</p>
+                                <p className='flex gap-2 justify-center items-center text-2xl py-1'><MdCloudDownload /> Descargar {title.split('-').join(' ')} {season + "x" + episode}</p>
                                 <a href={links.descarga} target='_blank' rel='noreferrer'>
                                     <img className='w-96 hover:scale-105 duration-300' src={links.btn} alt="imagen del boton" />
                                 </a>
@@ -93,6 +94,37 @@ const EpisodeSerie = () => {
                                 <p className=' w-full text-xl py-4 text-center'>Ver la pelicula Online:</p>
                                 <a href={links.online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
                             </div>
+                            <div className='flex justify-between py-7 max-w-[1400px] mx-5 w-full'>
+
+                                {prevEpisode ? (
+                                    <Link to={`/${id}/${title}/${season}/${prevEpisode.episode_number}`} className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center max-[467px]:rounded-full max-[467px]:px-3">
+                                        <AiOutlineArrowLeft className="max-[467px]:text-2xl" /> <p className="max-[467px]:hidden">Anterior Capítulo</p>
+                                    </Link>
+                                ) : <div className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center opacity-0">
+                                    <AiOutlineArrowLeft className="max-[467px] text-2xl" />
+                                    <p className="max-[467px]:hidden">Anterior Capítulo</p>
+                                </div>}
+
+                                <Link to={`/series/${id}/${title}`} className="text-white bg-cyan-500 hover:scale-105 shadow-cyan-500 duration-300 rounded-full p-4"><TfiMenuAlt /></Link>
+
+                                {totalEpisodes && nextEpisode && nextEpisode.episode_number !== null ? (
+                                    <Link
+                                        to={`/${id}/${title}/${season}/${nextEpisode.episode_number}`}
+                                        className={`text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center ${nextEpisode.episode_number === null ? "invisible" : "visible"
+                                            } max-[467px]:rounded-full max-[467px]:px-3`}
+                                    >
+                                        <p className="max-[467px]:hidden">Siguiente Capítulo</p>
+                                        <AiOutlineArrowRight className="max-[467px]:text-2xl" />
+                                    </Link>
+                                ) : (
+                                    <div className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center invisible">
+                                        <p className="max-[467px]:hidden">Siguiente Capítulo</p>
+                                        <AiOutlineArrowRight className="max-[467px]:text-2xl" />
+                                    </div>
+                                )}
+
+
+                            </div>
                             <FacebookProvider appId="703156001573798">
                                 <div id='fb-container' className='w-[720px] max-lg:w-[820px] max-[870px]:w-full'>
                                     <Comments href={currentUrl} numPosts="5" width="100%" locale="es_ES" />
@@ -103,36 +135,6 @@ const EpisodeSerie = () => {
                             <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en celular</p>
                             <iframe src='https://drive.google.com/file/d/19zOkFYUcf6m7Wd7hEN1FQP0zLzUMhSp5/preview' className='w-[720px] h-[480px] max-lg:w-[820px] max-lg:h-[500px] max-[870px]:w-full max-[670px]:h-[350px]' />
                         </section>}
-                        <div className='flex justify-between py-7 max-w-[1400px] mx-5'>
-                            {prevEpisode ? (
-                                <Link to={`/${id}/${title}/${season}/${prevEpisode.episode_number}`} className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center max-[467px]:rounded-full max-[467px]:px-3">
-                                    <AiOutlineArrowLeft className="max-[467px]:text-2xl" /> <p className="max-[467px]:hidden">Anterior Capítulo</p>
-                                </Link>
-                            ) : <div className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center opacity-0">
-                                <AiOutlineArrowLeft className="max-[467px] text-2xl" />
-                                <p className="max-[467px]:hidden">Anterior Capítulo</p>
-                            </div>}
-
-                            <Link to={`/series/${id}/${title}`} className="text-white bg-cyan-500 hover:scale-105 shadow-cyan-500 duration-300 rounded-full p-4"><TfiMenuAlt /></Link>
-
-                            {totalEpisodes && nextEpisode && nextEpisode.episode_number !== null ? (
-                                <Link
-                                    to={`/${id}/${title}/${season}/${nextEpisode.episode_number}`}
-                                    className={`text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center ${nextEpisode.episode_number === null ? "invisible" : "visible"
-                                        } max-[467px]:rounded-full max-[467px]:px-3`}
-                                >
-                                    <p className="max-[467px]:hidden">Siguiente Capítulo</p>
-                                    <AiOutlineArrowRight className="max-[467px]:text-2xl" />
-                                </Link>
-                            ) : (
-                                <div className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center invisible">
-                                    <p className="max-[467px]:hidden">Siguiente Capítulo</p>
-                                    <AiOutlineArrowRight className="max-[467px]:text-2xl" />
-                                </div>
-                            )}
-
-
-                        </div>
                     </div>
                 </section > : (
                     <div className='flex justify-center items-center h-full'>
