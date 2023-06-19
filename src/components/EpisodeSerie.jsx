@@ -19,7 +19,7 @@ const EpisodeSerie = () => {
     const inputRef = useRef(null);
     const { id, season, episode, title } = useParams()
     const { prevEpisode, nextEpisode, totalEpisodes } = useChangeEpisodes({ id, season, episode })
-    const { detailsEpisode, links, images, poster } = useEpisodeDetails(id, season, episode)
+    const { detailsEpisode, links, images, poster } = useEpisodeDetails(id, season, episode, title)
 
     const isLocal = window.location.hostname === 'localhost';
     const currentUrl = isLocal ? 'https://epic-moviee.vercel.app/' : window.location.href;
