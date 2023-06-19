@@ -77,6 +77,9 @@ const EpisodeSerie = () => {
                                     <img className='w-96 hover:scale-105 duration-300' src={links.btn} alt="imagen del boton" />
                                 </a>
                             </div>
+                            {links.isEpisode_pack && <><p className='flex gap-2 justify-center items-center text-2xl py-1'><MdCloudDownload /> Descargar {title.split('-').join(' ')} capitulos del {links.episodes_pack} </p><a href={links.link_episodes_pack} target='_blank' rel='noreferrer'>
+                                <img className='w-96 hover:scale-105 duration-300' src={links.btn_episodes_pack} alt="imagen del boton" />
+                            </a></>}
                             {links.password && <><p className='flex gap-2 justify-center text-xl py-3'>Copiar  contraseña</p><div className='flex justify-center  items-center mb-2'>
                                 <input className='text-black px-3 py-1 focus-visible:outline-none rounded-l-md' id="copyInput" ref={inputRef} value={inputValue} readOnly onClick={() => inputRef.current.select()} />
                                 <button className='bg-cyan-500 px-3 py-1 rounded-r-md' onClick={handleCopyClick}>Copiar</button>
