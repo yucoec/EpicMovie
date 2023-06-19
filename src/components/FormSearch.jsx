@@ -1,6 +1,6 @@
 import { AiOutlineSearch } from "react-icons/ai"
 import { useNavigate } from "react-router-dom"
-const Search = () => {
+const FormSearch = () => {
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
@@ -21,4 +21,4 @@ const Search = () => {
     )
 }
 
-export default Search
+export default FormSearch

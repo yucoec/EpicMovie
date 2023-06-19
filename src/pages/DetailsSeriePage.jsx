@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { useNavigate, useParams } from 'react-router-dom'
 import SerieDetails from '../components/SerieDetails'
 import getMovieDetails from '../services/getMovieDetails'
@@ -10,7 +10,7 @@ const DetailsSeriePage = () => {
     const navigate = useNavigate()
     const category = 'tv'
     const backPage = () => {
-        navigate(-1)
+        navigate('/series')
     }
 
     useEffect(() => {
@@ -23,8 +23,6 @@ const DetailsSeriePage = () => {
                 <Helmet>
                     <title>{`Epic Movie | ${details.name}`}</title>
                     <meta name='description' content={`Details of ${details.name}`} />
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4332686282875056"
-                        crossorigin="anonymous"></script>
                 </Helmet>}
             {details && <SerieDetails details={details} backPage={backPage} category={category} />}
         </>

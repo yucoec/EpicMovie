@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { useNavigate, useParams } from 'react-router-dom'
 import MovieDetails from '../components/MovieDetails'
 import getMovieDetails from '../services/getMovieDetails'
@@ -12,7 +12,7 @@ const DetailsMoviePage = () => {
     const navigate = useNavigate()
     const category = 'movie'
     const backPage = () => {
-        navigate(-1)
+        navigate('/')
     }
 
     useEffect(() => {
@@ -23,14 +23,17 @@ const DetailsMoviePage = () => {
         })
     }, [id])
 
+    const currentUrl = window.location.href;
+
     return (
         <>
             {details &&
                 <Helmet>
+                    <meta property="og:image" content={`https://image.tmdb.org/t/p/w1280${details.backdrop_path}`} />
                     <title>Epic Movie | {details.title}</title>
-                    <meta name='description' content={`Details of ${details.title}`} />
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4332686282875056"
-                        crossorigin="anonymous"></script>
+                    <meta property="og:description" content={details.overview} />
+                    <meta property="og:type" content="article" />
+                    <meta property="og:url" content={currentUrl} />
                 </Helmet>}
             {details && <MovieDetails details={details} backPage={backPage} category={category} movieLinks={movieLinks} />}
         </>

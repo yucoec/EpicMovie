@@ -38,7 +38,7 @@ export function getMovieVideo(id, category) {
         })
         .catch((err) => {
             console.log(err);
-            return ('No se pudo conectar al servidor o No se encontraron videos para esta pelicula');
+            return ('No se encontraron videos para esta pelicula');
         });
 
 }
