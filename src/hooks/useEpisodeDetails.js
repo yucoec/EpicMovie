@@ -11,7 +11,6 @@ const useEpisodeDetails = (id, season, episode) => {
     const [poster, setPoster] = useState(null);
 
 
-
     useEffect(() => {
         getSerieList().then((data) => {
             const matchingSerie = data.find((serieObj) => {

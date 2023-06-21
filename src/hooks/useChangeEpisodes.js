@@ -1,13 +1,21 @@
 import { useEffect, useState } from 'react';
-import getSeasonList from '../services/getSeasonList';
+import { getSerieList } from '../services/getSerieList';
 
 export function useChangeEpisodes({ id, season, episode }) {
     const [episodes, setEpisodes] = useState([]);
     const [totalEpisodes, setTotalEpisodes] = useState(0);
     useEffect(() => {
-        getSeasonList(id, season).then(res => {
-            setEpisodes(res.episodes);
-            setTotalEpisodes(res.episodes.length);
+        getSerieList().then((data) => {
+            const matchingSerie = data.find((serieObj) => {
+                return (serieObj.id) === Number(id)
+            });
+            if (matchingSerie) {
+                const matchingSeason = matchingSerie.seasons.find(
+                    (seasonObj) => seasonObj.season_number === Number(season)
+                );
+                setEpisodes(matchingSeason.episodes);
+                setTotalEpisodes(matchingSeason.episodes.length);
+            }
         });
     }, [id, season]);
 

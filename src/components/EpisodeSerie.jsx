@@ -49,6 +49,7 @@ const EpisodeSerie = () => {
                 }}>
                     <Helmet>
                         <title>Epic Movie | {detailsEpisode.name}</title>
+                        <meta property="fb:admins" content="113374518457510" />
                     </Helmet>
                     <div className='text-white h-full max-w-[1400px] mx-auto'>
                         <div className='min-[482px]:mx-5 mx-2 py-3'>
