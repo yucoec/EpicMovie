@@ -12,11 +12,14 @@
     font-family: "Roboto", sans-serif;
 }
 
+html {
+    background-color: black;
+}
+
 body {
     background-color: black;
 }
 
-.fb-comments iframe[style] {
-    background-color: #fff;
-    width: 100%;
+.disqus-container iframe {
+    all: initial;
 }

@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import movieicon from '../assets/movie.svg';
-import tvicon from '../assets/tv.svg';
+import { useNavigate } from "react-router-dom";
 import EpiModal from "../components/EpiModal";
 import { ListOfMovies } from "../components/ListOfMovies";
 import { getMovieList } from "../services/getMovieList";
@@ -32,10 +30,6 @@ export function Home() {
     return (
         <>
             <div className='bg-black text-white'>
-                <div className='flex justify-around py-2 h-10'>
-                    <Link to="/" aria-checked='true' className='flex gap-1 items-center  hover:border-b-slate-50 hover:border-b-2'><img src={movieicon} className='w-4' alt="movie Icon" /> Peliculas</Link>
-                    <Link to={`/series`} className='flex gap-1 items-center hover:border-b-2'><img src={tvicon} className='w-5' alt="tv Icon" /> Series</Link>
-                </div>
                 <div className='w-full max-w-[1400px] mx-auto'>
                     {currentProducts && <ListOfMovies movieList={currentProducts} />}
                     <div className='flex justify-around h-12 items-center'>

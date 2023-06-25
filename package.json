@@ -10,9 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "disqus-react": "^1.1.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-facebook": "^9.0.12",
     "react-helmet-async": "1.3.0",
     "react-icons": "4.9.0",
     "react-modal": "^3.16.1",

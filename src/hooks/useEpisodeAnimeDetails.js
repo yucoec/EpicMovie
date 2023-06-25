@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import { getAnimeList } from "../services/getAnimeList";
 import getEpisodeDetails from "../services/getEpisodeDetails";
 import getEpisodeImages from "../services/getEpisodeImages";
 import getSerieDetails from "../services/getSerieDetails";
-import { getSerieList } from "../services/getSerieList";
 
-const useEpisodeDetails = (id, season, episode) => {
+const useEpisodeAnimeDetails = (id, season, episode) => {
     const [detailsEpisode, setDetailsEpisode] = useState(null);
     const [links, setLinks] = useState([]);
     const [images, setImages] = useState([]);
@@ -12,7 +12,7 @@ const useEpisodeDetails = (id, season, episode) => {
 
 
     useEffect(() => {
-        getSerieList().then((data) => {
+        getAnimeList().then((data) => {
             const matchingSerie = data.find((serieObj) => {
                 return (serieObj.id) === Number(id)
             });
@@ -49,4 +49,4 @@ const useEpisodeDetails = (id, season, episode) => {
     return { detailsEpisode, links, images, poster };
 };
 
-export default useEpisodeDetails;
+export default useEpisodeAnimeDetails;

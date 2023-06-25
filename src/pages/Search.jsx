@@ -13,7 +13,7 @@ const Search = () => {
     }, [keyword]);
     return (
         <div className='bg-black text-white h-full max-w-[1200px] mx-auto'>
-            {searchResults && (<div className='grid gap-4 grid-cols-16 mx-[5px] justify-items-center justify-center pt-2'>
+            {searchResults && (<div className='grid gap-4 grid-cols-16 mx-[5px] max-[482px]:grid-cols-17 justify-items-center justify-center pt-2'>
                 {searchResults.length !== 0 ? (searchResults.map(({ category, id, calidad, name }) => {
                     return category === 'movie' ? (<CardMovie key={id} id={id} calidad={calidad} category={category} name={name} />) : (<CardSeries key={id} id={id} category={category} />)
                 })) : (<div className='text-center h-screen'><b><p>No hay resultados de "{keyword}"</p></b></div>)}

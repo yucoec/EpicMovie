@@ -11,25 +11,25 @@ import vlcLogo from '../assets/VLC_icon.webp'
 import imageNotFound from '../assets/imageNotFound.png'
 import winrarLogo from '../assets/winrar.webp'
 import { useChangeEpisodes } from "../hooks/useChangeEpisodes"
-import useEpisodeDetails from "../hooks/useEpisodeDetails"
+import useEpisodeAnimeDetails from "../hooks/useEpisodeAnimeDetails"
 import { Footer } from "./Footer"
 
-const EpisodeSerie = () => {
+const EpisodeAnime = () => {
     const [inputValue, setInputValue] = useState('hackstore.ac');
     const inputRef = useRef(null);
     const { id, season, episode, title } = useParams()
     const { prevEpisode, nextEpisode, totalEpisodes } = useChangeEpisodes({ id, season, episode })
-    const { detailsEpisode, links, images, poster } = useEpisodeDetails(id, season, episode, title)
+    const { detailsEpisode, links, images, poster } = useEpisodeAnimeDetails(id, season, episode, title)
 
     const isLocal = window.location.hostname === 'localhost';
     const currentUrl = isLocal ? 'https://epic-moviee.vercel.app/' : window.location.href;
+
     const disqusConfig = {
         shortname: 'epic-movie',
         config: {
             url: currentUrl,
             identifier: `movie-${id}`,
             title: detailsEpisode?.name,
-            language: 'es_MX',
             sso: {
                 width: '500',
                 height: '400',
@@ -93,7 +93,7 @@ const EpisodeSerie = () => {
                         </div>
 
 
-                        {links && <section className='flex items-center flex-col gap-2 pb-5 min-[482px]:mx-5 px-2' key={links.id} id={links.id}>
+                        {links && <section className='flex items-center flex-col gap-2 min-[482px]:mx-5 pb-5 px-2' key={links.id} id={links.id}>
                             <div className='flex gap-2 justify-center flex-col items-center mb-2'>
                                 <p className='flex gap-2 justify-center items-center text-2xl py-1'><MdCloudDownload /> Descargar {title.split('-').join(' ')} {season + "x" + episode}</p>
                                 <a href={links.descarga} target='_blank' rel='noreferrer'>
@@ -131,7 +131,7 @@ const EpisodeSerie = () => {
                                     <p className="max-[467px]:hidden">Anterior Capítulo</p>
                                 </div>}
 
-                                <Link to={`/series/${id}/${title}`} className="text-white bg-cyan-500 hover:scale-105 shadow-cyan-500 duration-300 rounded-full p-4"><TfiMenuAlt /></Link>
+                                <Link to={`/anime/${id}/${title}`} className="text-white bg-cyan-500 hover:scale-105 shadow-cyan-500 duration-300 rounded-full p-4"><TfiMenuAlt /></Link>
 
                                 {totalEpisodes && nextEpisode && nextEpisode.episode_number !== null ? (
                                     <Link
@@ -181,4 +181,4 @@ const EpisodeSerie = () => {
     )
 }
 
-export default EpisodeSerie
+export default EpisodeAnime

@@ -1,5 +1,5 @@
+import { DiscussionEmbed } from 'disqus-react'
 import { useRef, useState } from 'react'
-import { Comments, FacebookProvider } from 'react-facebook'
 import { AiFillPlayCircle, AiFillStar } from 'react-icons/ai'
 import { BsArrowLeft } from 'react-icons/bs'
 import { MdCloudDownload } from 'react-icons/md'
@@ -11,7 +11,7 @@ import imageNotFound from '../assets/imageNotFound.png'
 import videoNotFound from '../assets/videoNotFound.png'
 import winrarLogo from '../assets/winrar.webp'
 import { useMovieDetails } from '../hooks/useMovieDetails'
-
+import { Footer } from './Footer'
 const MovieDetails = ({ details, backPage, movieLinks }) => {
     const { id } = useParams()
     const [inputValue, setInputValue] = useState('hackstore.ac');
@@ -25,8 +25,23 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
             autoplay: 0
         }
     }
+
     const isLocal = window.location.hostname === 'localhost';
     const currentUrl = isLocal ? 'https://epic-moviee.vercel.app/' : window.location.href;
+    const disqusConfig = {
+        shortname: 'epic-movie',
+        config: {
+            url: currentUrl,
+            identifier: `movie-${id}`,
+            title: details.title,
+            language: 'es_MX',
+            sso: {
+                width: '500',
+                height: '400',
+                colorScheme: 'dark',
+            }
+        },
+    };
 
 
     const horas = Math.floor(details.runtime / 60)
@@ -83,7 +98,6 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                             </section>
                         </div>
                     </div>
-
                     {movieLinks?.map(({ id, descarga, online, password }) => {
                         return (
                             <section className='flex items-center flex-col gap-2 min-[482px]:mx-5 px-2' key={id}>
@@ -120,22 +134,28 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                                     <p className=' w-full text-xl py-4 text-center'>Link para ver la pelicula Online:</p>
                                     <a href={online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
                                 </div>
-                                <FacebookProvider appId="703156001573798">
-                                    <div id='fb-container' className='w-[720px] max-lg:w-[820px] max-[870px]:w-full'>
-                                        <Comments href={currentUrl} numPosts="5" width="100%" locale="es_ES" />
+                                <DiscussionEmbed {...disqusConfig} className='w-full' theme='dark' />
+                                <div className="flex flex-wrap justify-center items-center gap-4 mx-[calc(2rem*.5)]">
+                                    <div className="overflow-hidden relative container-before min-[625px]:h-[192px] min-[767px]:h-[215px]">
+                                        <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en pc</p>
+                                        <iframe src='https://drive.google.com/file/d/1eAfAlz6fexwL6B_I1AUP7pt0eeSH1B1f/preview' allowFullScreen className='h-auto w-full align-middle rounded-3xl object-cover' />
                                     </div>
-                                </FacebookProvider>
-                                <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en pc</p>
-                                <iframe src='https://drive.google.com/file/d/1eAfAlz6fexwL6B_I1AUP7pt0eeSH1B1f/preview' className='w-[720px] h-[480px] max-lg:w-[820px] max-lg:h-[500px] max-[870px]:w-full max-[670px]:h-[350px]' />
-                                <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en celular</p>
-                                <iframe src='https://drive.google.com/file/d/19zOkFYUcf6m7Wd7hEN1FQP0zLzUMhSp5/preview' className='w-[720px] h-[480px] max-lg:w-[820px] max-lg:h-[500px] max-[870px]:w-full max-[670px]:h-[350px]' />
+                                    <div className="overflow-hidden relative container-before min-[625px]:h-[192px] min-[767px]:h-[215px]">
+                                        <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en celular</p>
+                                        <iframe src='https://drive.google.com/file/d/19zOkFYUcf6m7Wd7hEN1FQP0zLzUMhSp5/preview' allowFullScreen className='h-auto w-full align-middle rounded-3xl object-cover' />
+                                    </div>
+                                    <div className="overflow-hidden relative container-before min-[625px]:h-[192px] min-[767px]:h-[215px]">
+                                        <p className=' w-full text-xl py-4 text-center'>Como pasar el acortador CUTY.IO</p>
+                                        <Youtube opts={opts} videoId="/1g89qEw863w" />
+                                    </div>
+                                </div>
+                                <div className='flex justify-center py-7'>
+                                    <button className='flex gap-1 items-center hover:border-b-2 hover:border-b-slate-50 border-b-2 border-transparent' onClick={backPage}><BsArrowLeft />Back</button>
+                                </div>
+                                <Footer />
                             </section>
                         )
                     })}
-
-                    <div className='flex justify-center py-7'>
-                        <button className='flex gap-1 items-center hover:border-b-2' onClick={backPage}><BsArrowLeft />Back</button>
-                    </div>
                 </div >
             </section >
         </>

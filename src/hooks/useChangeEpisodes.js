@@ -5,6 +5,7 @@ export function useChangeEpisodes({ id, season, episode }) {
     const [episodes, setEpisodes] = useState([]);
     const [totalEpisodes, setTotalEpisodes] = useState(0);
     useEffect(() => {
+        // Verificar si hay episodios para cambiar 
         getSerieList().then((data) => {
             const matchingSerie = data.find((serieObj) => {
                 return (serieObj.id) === Number(id)
