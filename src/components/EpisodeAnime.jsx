@@ -155,12 +155,12 @@ const EpisodeAnime = () => {
                             <div className="flex flex-wrap justify-center items-center gap-4 mx-[calc(2rem*.5)]">
                                 <div className="overflow-hidden relative container-before min-[625px]:h-[192px] min-[767px]:h-[215px]">
                                     <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en pc</p>
-                                    <iframe src='https://uqload.co/embed-sumya57fio6p.html' allowFullScreen className='h-auto w-full align-middle rounded-3xl object-cover' />
+                                    <iframe src='https://drive.google.com/file/d/1eAfAlz6fexwL6B_I1AUP7pt0eeSH1B1f/preview' allowFullScreen className='h-auto w-full align-middle rounded-3xl object-cover' />
                                 </div>
                                 <div className="overflow-hidden relative container-before min-[625px]:h-[192px] min-[767px]:h-[215px]">
 
                                     <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en celular</p>
-                                    <iframe src='https://uqload.co/embed-zlfo9e1dpyja.html' allowFullScreen className='h-auto w-full align-middle rounded-3xl object-cover' />
+                                    <iframe src='https://drive.google.com/file/d/19zOkFYUcf6m7Wd7hEN1FQP0zLzUMhSp5/preview' allowFullScreen className='h-auto w-full align-middle rounded-3xl object-cover' />
                                 </div>
                                 <div className="overflow-hidden relative container-before min-[625px]:h-[192px] min-[767px]:h-[215px]">
 
