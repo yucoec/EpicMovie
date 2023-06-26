@@ -20,22 +20,12 @@ const EpisodeAnime = () => {
     const { id, season, episode, title } = useParams()
     const { prevEpisode, nextEpisode, totalEpisodes } = useChangeEpisodes({ id, season, episode })
     const { detailsEpisode, links, images, poster } = useEpisodeAnimeDetails(id, season, episode, title)
-
-    const isLocal = window.location.hostname === 'localhost';
-    const currentUrl = isLocal ? 'https://epic-moviee.vercel.app/' : window.location.href;
-
+    const currentUrl = window.location.href;
+    const titleDisqus = title + '-' + season + 'x' + episode
     const disqusConfig = {
-        shortname: 'epic-movie',
-        config: {
-            url: currentUrl,
-            identifier: `movie-${id}`,
-            title: detailsEpisode?.name,
-            sso: {
-                width: '500',
-                height: '400',
-            }
-        },
-
+        url: currentUrl,
+        identifier: id + titleDisqus,
+        title: titleDisqus
     };
 
     const opts = {
@@ -151,7 +141,7 @@ const EpisodeAnime = () => {
 
 
                             </div>
-                            <DiscussionEmbed {...disqusConfig} className='w-full' />
+                            <DiscussionEmbed shortname='epic-movie' config={disqusConfig} className='w-full' />
                             <div className="flex flex-wrap justify-center items-center gap-4 mx-[calc(2rem*.5)]">
                                 <div className="overflow-hidden relative container-before min-[625px]:h-[192px] min-[767px]:h-[215px]">
                                     <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en pc</p>

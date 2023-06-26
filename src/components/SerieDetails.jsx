@@ -1,3 +1,4 @@
+import { DiscussionEmbed } from 'disqus-react'
 import { useEffect, useState } from 'react'
 import { AiFillCaretDown, AiFillStar } from 'react-icons/ai'
 import { BsArrowLeft } from 'react-icons/bs'
@@ -15,8 +16,14 @@ function obtenerPrimeraTemporada(serie) {
 
 const SerieDetails = ({ details, backPage }) => {
     const [serie, setSerie] = useState([]);
-    const { id } = useParams()
+    const { id, title } = useParams()
     const [temporadaSeleccionada, setTemporadaSeleccionada] = useState(null);
+    const currentUrl = window.location.href;
+    const disqusConfig = {
+        url: currentUrl,
+        identifier: id,
+        title: title,
+    };
 
     useEffect(() => {
         getSerieList().then(data => {
@@ -78,6 +85,10 @@ const SerieDetails = ({ details, backPage }) => {
                         )
                     );
                 })}
+                <div className='min-[482px]:mx-5 mx-2 py-5'>
+                    <DiscussionEmbed shortname='epic-movie' config={disqusConfig} className='w-full' />
+                </div>
+
             </section>
 
 

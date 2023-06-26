@@ -20,22 +20,12 @@ const EpisodeSerie = () => {
     const { id, season, episode, title } = useParams()
     const { prevEpisode, nextEpisode, totalEpisodes } = useChangeEpisodes({ id, season, episode })
     const { detailsEpisode, links, images, poster } = useEpisodeDetails(id, season, episode, title)
-
-    const isLocal = window.location.hostname === 'localhost';
-    const currentUrl = isLocal ? 'https://epic-moviee.vercel.app/' : window.location.href;
+    const currentUrl = window.location.href;
+    const titleDisqus = title + '-' + season + 'x' + episode
     const disqusConfig = {
-        shortname: 'epic-movie',
-        config: {
-            url: currentUrl,
-            identifier: `movie-${id}`,
-            title: detailsEpisode?.name,
-            language: 'es_MX',
-            sso: {
-                width: '500',
-                height: '400',
-            }
-        },
-
+        url: currentUrl,
+        identifier: id + titleDisqus,
+        title: titleDisqus
     };
 
     const opts = {
@@ -45,6 +35,7 @@ const EpisodeSerie = () => {
             autoplay: 0
         }
     }
+
 
     const handleCopyClick = () => {
         const inputElement = document.getElementById('copyInput');
@@ -123,7 +114,7 @@ const EpisodeSerie = () => {
                             <div className='flex justify-between py-7 max-w-[1400px] mx-5 w-full'>
 
                                 {prevEpisode ? (
-                                    <Link to={`/${id}/${title}/${season}/${prevEpisode.episode_number}`} className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center max-[467px]:rounded-full max-[467px]:px-3">
+                                    <Link to={`/series/${id}/${title}/${season}/${prevEpisode.episode_number}`} className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center max-[467px]:rounded-full max-[467px]:px-3">
                                         <AiOutlineArrowLeft className="max-[467px]:text-2xl" /> <p className="max-[467px]:hidden">Anterior Capítulo</p>
                                     </Link>
                                 ) : <div className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center opacity-0">
@@ -135,7 +126,7 @@ const EpisodeSerie = () => {
 
                                 {totalEpisodes && nextEpisode && nextEpisode.episode_number !== null ? (
                                     <Link
-                                        to={`/${id}/${title}/${season}/${nextEpisode.episode_number}`}
+                                        to={`/series/${id}/${title}/${season}/${nextEpisode.episode_number}`}
                                         className={`text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center ${nextEpisode.episode_number === null ? "invisible" : "visible"
                                             } max-[467px]:rounded-full max-[467px]:px-3`}
                                     >
@@ -151,7 +142,7 @@ const EpisodeSerie = () => {
 
 
                             </div>
-                            <DiscussionEmbed {...disqusConfig} className='w-full' />
+                            <DiscussionEmbed shortname='epic-movie' config={disqusConfig} className='w-full' />
                             <div className="flex flex-wrap justify-center items-center gap-4 mx-[calc(2rem*.5)]">
                                 <div className="overflow-hidden relative container-before min-[625px]:h-[192px] min-[767px]:h-[215px]">
                                     <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en pc</p>
