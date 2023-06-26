@@ -18,6 +18,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
     const inputRef = useRef(null);
     const category = 'movie';
     const { video, loading } = useMovieDetails({ id, category })
+
     const opts = {
         height: '100%',
         width: '100%',
@@ -25,22 +26,11 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
             autoplay: 0
         }
     }
-
-    const isLocal = window.location.hostname === 'localhost';
-    const currentUrl = isLocal ? 'https://epic-moviee.vercel.app/' : window.location.href;
+    const currentUrl = window.location.href;
     const disqusConfig = {
-        shortname: 'epic-movie',
-        config: {
-            url: currentUrl,
-            identifier: `movie-${id}`,
-            title: details.title,
-            language: 'es_MX',
-            sso: {
-                width: '500',
-                height: '400',
-                colorScheme: 'dark',
-            }
-        },
+        url: currentUrl,
+        identifier: id,
+        title: details.title,
     };
 
 
@@ -134,7 +124,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                                     <p className=' w-full text-xl py-4 text-center'>Link para ver la pelicula Online:</p>
                                     <a href={online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
                                 </div>
-                                <DiscussionEmbed {...disqusConfig} className='w-full' theme='dark' />
+                                <DiscussionEmbed shortname='epic-movie' config={disqusConfig} className='w-full' />
                                 <div className="flex flex-wrap justify-center items-center gap-4 mx-[calc(2rem*.5)]">
                                     <div className="overflow-hidden relative container-before min-[625px]:h-[192px] min-[767px]:h-[215px]">
                                         <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en pc</p>
