@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EpiModal from "../components/EpiModal";
+import { Footer } from "../components/Footer";
 import { ListOfMovies } from "../components/ListOfMovies";
 import { getMovieList } from "../services/getMovieList";
 
-export function Home() {
+const Home = () => {
     const [movieList, setMovieList] = useState([]);
     const navigate = useNavigate();
 
@@ -38,7 +39,9 @@ export function Home() {
                 </div>
             </div>
             <EpiModal />
+            <Footer />
         </>
     )
 }
 
+export default Home;

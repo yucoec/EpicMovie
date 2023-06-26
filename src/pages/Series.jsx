@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import { Footer } from "../components/Footer";
 import { ListOfSeries } from "../components/ListOfSeries";
 import { getSerieList } from "../services/getSerieList";
 
-export function Series() {
+const Series = () => {
     const [movieList, setMovieList] = useState([]);
-
 
     useEffect(() => {
         getSerieList().then(data => {
@@ -21,6 +21,8 @@ export function Series() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }
+export default Series;

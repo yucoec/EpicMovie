@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { Footer } from "../components/Footer";
 import { ListOfAnimes } from "../components/ListOfAnimes";
 import { getAnimeList } from "../services/getAnimeList";
 
-export function Anime() {
+const Anime = () => {
     const [movieList, setMovieList] = useState([]);
 
 
@@ -21,6 +22,9 @@ export function Anime() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }
+
+export default Anime;

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { MoonLoader } from 'react-spinners';
+import { Footer } from '../components/Footer';
 import { ListOfMovies } from '../components/ListOfMovies';
 import { getMovieList } from '../services/getMovieList';
 
@@ -62,10 +64,11 @@ const List = () => {
                             </div>
                         </>
                     ) : (
-                        <p>Cargando películas...</p>
+                        <MoonLoader color='#fff' size={120} speedMultiplier={2} />
                     )}
                 </div>
             </div>
+            <Footer />
         </>
     );
 };

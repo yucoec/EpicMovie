@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { Footer } from '../components/Footer';
 import './pageNotFound.css';
-export function PageNotFound() {
+
+const PageNotFound = () => {
     return (
         <>
             {/* Make sure to change 'href' attribute (Go Home) in Line 110 */}
@@ -387,10 +389,9 @@ export function PageNotFound() {
                     </Link>
                 </div>
             </main>
-            {/* Created by ARiyou2000 */}
-            <p>Enter your HTML here</p>
+            <Footer />
         </>
 
     )
 }
-
+export default PageNotFound;

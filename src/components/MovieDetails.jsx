@@ -150,7 +150,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                                     </div>
                                 </div>
                                 <div className='flex justify-center py-7'>
-                                    <button className='flex gap-1 items-center hover:border-b-2 hover:border-b-slate-50 border-b-2 border-transparent' onClick={backPage}><BsArrowLeft />Back</button>
+                                    <button className='flex gap-1 items-center hover:border-b-2 hover:border-b-slate-50 border-b-2 border-transparent' onClick={backPage}><BsArrowLeft />Atras</button>
                                 </div>
                                 <Footer />
                             </section>

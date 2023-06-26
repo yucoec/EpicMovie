@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useNavigate, useParams } from 'react-router-dom'
 import AnimeDetails from '../components/AnimeDetails'
+import { Footer } from '../components/Footer'
 import getMovieDetails from '../services/getMovieDetails'
 
 const DetailsAnimePage = () => {
@@ -25,6 +26,7 @@ const DetailsAnimePage = () => {
                     <meta name='description' content={`Details of ${details.name}`} />
                 </Helmet>}
             {details && <AnimeDetails details={details} backPage={backPage} category={category} />}
+            <Footer />
         </>
     )
 }

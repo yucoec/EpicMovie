@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { CardMovie } from '../components/CardMovie';
 import { CardSeries } from '../components/CardSeries';
+import { Footer } from '../components/Footer';
 import { getMovieSearch } from '../services/getMovieSearch';
 
 const Search = () => {
@@ -18,6 +19,7 @@ const Search = () => {
                     return category === 'movie' ? (<CardMovie key={id} id={id} calidad={calidad} category={category} name={name} />) : (<CardSeries key={id} id={id} category={category} />)
                 })) : (<div className='text-center h-screen'><b><p>No hay resultados de "{keyword}"</p></b></div>)}
             </div>)}
+            <Footer />
         </div>
     );
 };

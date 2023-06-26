@@ -82,7 +82,7 @@ const AnimeDetails = ({ details, backPage }) => {
 
 
             <div className='flex justify-center my-7 text-white'>
-                <button className='flex gap-1 items-center hover:border-b-2' onClick={backPage}><BsArrowLeft />Back</button>
+                <button className='flex gap-1 items-center hover:border-b-2' onClick={backPage}><BsArrowLeft />Atras</button>
             </div>
         </>
 

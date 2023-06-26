@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useNavigate, useParams } from 'react-router-dom'
+import { Footer } from '../components/Footer'
 import MovieDetails from '../components/MovieDetails'
 import getMovieDetails from '../services/getMovieDetails'
 import { getMovieList } from '../services/getMovieList'
@@ -36,6 +37,7 @@ const DetailsMoviePage = () => {
                     <meta property="og:url" content={currentUrl} />
                 </Helmet>}
             {details && <MovieDetails details={details} backPage={backPage} category={category} movieLinks={movieLinks} />}
+            <Footer />
         </>
     )
 }
