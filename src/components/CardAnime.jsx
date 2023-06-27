@@ -17,7 +17,7 @@ export function CardAnime({ id, category }) {
     }
 
     const { id: movieId, poster_path, name, first_air_date, vote_average, original_name } = info;
-    const nameSerie = original_name.split(' ').join('-').toLowerCase();
+    const nameSerie = name.split(' ').join('-').toLowerCase();
 
     return (
         <Link to={`/anime/${id}/${nameSerie}`} className='cursor-pointer h-auto bg-[#1a1a1a] w-full rounded-b mb-2  hover:scale-105 duration-300' id={movieId}>
