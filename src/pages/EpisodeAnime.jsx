@@ -11,14 +11,14 @@ import vlcLogo from '../assets/VLC_icon.webp'
 import imageNotFound from '../assets/imageNotFound.png'
 import winrarLogo from '../assets/winrar.webp'
 import { Footer } from "../components/Footer"
-import { useChangeEpisodes } from "../hooks/useChangeEpisodes"
+import { useChangeEpisodesAnime } from "../hooks/useChangeEpisodesAnime"
 import useEpisodeAnimeDetails from "../hooks/useEpisodeAnimeDetails"
 
 const EpisodeAnime = () => {
     const [inputValue, setInputValue] = useState('hackstore.ac');
     const inputRef = useRef(null);
     const { id, season, episode, title } = useParams()
-    const { prevEpisode, nextEpisode, totalEpisodes } = useChangeEpisodes({ id, season, episode })
+    const { prevEpisode, nextEpisode, totalEpisodes } = useChangeEpisodesAnime({ id, season, episode })
     const { detailsEpisode, links, images, poster } = useEpisodeAnimeDetails(id, season, episode, title)
     const currentUrl = window.location.href;
     const titleDisqus = title + '-' + season + 'x' + episode
@@ -113,7 +113,7 @@ const EpisodeAnime = () => {
                             <div className='flex justify-between py-7 max-w-[1400px] mx-5 w-full'>
 
                                 {prevEpisode ? (
-                                    <Link to={`/${id}/${title}/${season}/${prevEpisode.episode_number}`} className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center max-[467px]:rounded-full max-[467px]:px-3">
+                                    <Link to={`/anime/${id}/${title}/${season}/${prevEpisode.episode_number}`} className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center max-[467px]:rounded-full max-[467px]:px-3">
                                         <AiOutlineArrowLeft className="max-[467px]:text-2xl" /> <p className="max-[467px]:hidden">Anterior Capítulo</p>
                                     </Link>
                                 ) : <div className="text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center opacity-0">
@@ -125,7 +125,7 @@ const EpisodeAnime = () => {
 
                                 {totalEpisodes && nextEpisode && nextEpisode.episode_number !== null ? (
                                     <Link
-                                        to={`/${id}/${title}/${season}/${nextEpisode.episode_number}`}
+                                        to={`/anime/${id}/${title}/${season}/${nextEpisode.episode_number}`}
                                         className={`text-white py-2 px-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem] flex gap-2 items-center ${nextEpisode.episode_number === null ? "invisible" : "visible"
                                             } max-[467px]:rounded-full max-[467px]:px-3`}
                                     >
