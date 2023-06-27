@@ -37,7 +37,7 @@ const AnimeDetails = ({ details, backPage }) => {
             }}>
                 <div className='text-white h-full max-w-[1400px] mx-auto'>
                     <div className='min-[482px]:mx-5 mx-2 py-3'>
-                        <h1 className='text-[32px] leading-8'>{details.original_name}</h1>
+                        <h1 className='text-[32px] leading-8'>{details.name}</h1>
                         <h2 className='text-[rgba(255,255,255,.7)] text-sm mt-1'>Título original: {details.original_name}</h2>
                         <p className='text-[rgba(255,255,255,.7)] text-sm mb-2 flex  items-center'>{details.first_air_date} <AiFillStar className='text-yellow-400 w-4 mx-1' />{details.vote_average.toFixed(1)}</p>
                     </div>
