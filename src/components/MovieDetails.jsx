@@ -14,7 +14,7 @@ import { useMovieDetails } from '../hooks/useMovieDetails'
 import { Footer } from './Footer'
 const MovieDetails = ({ details, backPage, movieLinks }) => {
     const { id } = useParams()
-    const [inputValue, setInputValue] = useState('hackstore.ac');
+    const [inputValue, setInputValue] = useState('');
     const inputRef = useRef(null);
     const category = 'movie';
     const { video, loading } = useMovieDetails({ id, category })
@@ -26,6 +26,7 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
             autoplay: 0
         }
     }
+
     const currentUrl = window.location.href;
     const disqusConfig = {
         url: currentUrl,
@@ -33,23 +34,17 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
         title: details.title,
     };
 
-
     const horas = Math.floor(details.runtime / 60)
     const minutosRestantes = details.runtime % 60
 
-    const handleCopyClick = () => {
-        const inputElement = document.getElementById('copyInput');
-        inputElement.select();
-        navigator.clipboard.writeText(inputElement.value)
-            .then(() => {
-                setInputValue('Contraseña copiada!');
-                setTimeout(() => {
-                    setInputValue('hackstore.ac');
-                }, 1500);
-            })
-            .catch((error) => {
-                console.error('Error al copiar al portapapeles:', error);
-            });
+    const handleCopyClick = (currentPasword) => {
+        inputRef.current.select();
+        document.execCommand('copy');
+        setInputValue('Contraseña copiada!');
+        setTimeout(() => {
+            setInputValue(currentPasword);
+        }, 1500);
+
     };
 
 
@@ -88,7 +83,8 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                             </section>
                         </div>
                     </div>
-                    {movieLinks?.map(({ id, descarga, online, password }) => {
+                    {movieLinks?.map(({ id, descarga, online, password, passwordText }) => {
+                        const currentPasword = password ? (passwordText || 'hackstore.ac') : null
                         return (
                             <section className='flex items-center flex-col gap-2 min-[482px]:mx-5 px-2' key={id}>
                                 <div className='flex gap-2 justify-center flex-col items-center mb-2'>
@@ -107,8 +103,8 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                                         </div>
                                     ))}
                                     {password && <><p className='flex gap-2 justify-center text-xl py-3'>Copiar  contraseña</p><div className='flex justify-center  items-center mb-2'>
-                                        <input className='text-black px-3 py-1 focus-visible:outline-none rounded-l-md' id="copyInput" ref={inputRef} value={inputValue} readOnly onClick={() => inputRef.current.select()} />
-                                        <button className='bg-cyan-500 px-3 py-1 rounded-r-md' onClick={handleCopyClick}>Copiar</button>
+                                        <input className='text-black px-3 py-1 focus-visible:outline-none rounded-l-md' id="copyInput" ref={inputRef} value={inputValue || currentPasword} readOnly onClick={() => inputRef.current.select()} />
+                                        <button className='bg-cyan-500 px-3 py-1 rounded-r-md' onClick={() => handleCopyClick(currentPasword)}>Copiar</button>
                                     </div>
                                         <a href="https://www.winrar.es/descargas" target="_blank" rel="noopener noreferrer" className='flex gap-2 justify-center items-center mb-2 bg-cyan-500 rounded-md w-full p-1'>
                                             <img className='w-11 p-1' src={winrarLogo} alt="Logo de winrar" />

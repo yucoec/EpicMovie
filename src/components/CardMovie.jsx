@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AiFillStar } from 'react-icons/ai';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from 'react-router-dom';
 import imageNotFound from '../assets/imageNotFound.png';
 import { getInfoMovie } from "../services/getInfoMovie";
@@ -22,8 +23,8 @@ export function CardMovie({ id, category, calidad, name }) {
 
     return (
         <Link to={`/${id}/${nameMovie}`} className='cursor-pointer h-auto bg-[#1a1a1a] w-full rounded-b mb-2 hover:scale-105 duration-300 relative' id={movieId}>
-            {poster_path ? <img className="w-[220px] h-[330px] max-[482px]:h-[240px] object-cover" src={`https://image.tmdb.org/t/p/w500${poster_path}`} srcSet={`https://image.tmdb.org/t/p/w200${poster_path} 200w, https://image.tmdb.org/t/p/w300${poster_path} 300w, https://image.tmdb.org/t/p/w500${poster_path} 500w`} sizes="(min-width: 500px) 220px, 162px" alt={`poster de ${title}`} />
-                : <img src={imageNotFound} alt='img not found' />}
+            {poster_path ? <LazyLoadImage className="w-[220px] h-[330px] max-[482px]:h-[240px] object-cover" src={`https://image.tmdb.org/t/p/w500${poster_path}`} srcSet={`https://image.tmdb.org/t/p/w200${poster_path} 200w, https://image.tmdb.org/t/p/w300${poster_path} 300w, https://image.tmdb.org/t/p/w500${poster_path} 500w`} sizes="(min-width: 500px) 220px, 162px" alt={`poster de ${title}`} />
+                : <LazyLoadImage src={imageNotFound} alt='img not found' />}
             <div className='m-1 flex items-center gap-1'>
                 <AiFillStar className='text-yellow-500 w-4' />
                 <p>{vote_average.toFixed(1)}</p>

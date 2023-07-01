@@ -11,7 +11,7 @@ const DetailsAnimePage = () => {
     const navigate = useNavigate()
     const category = 'tv'
     const backPage = () => {
-        navigate('/series')
+        navigate('/anime')
     }
 
     useEffect(() => {
