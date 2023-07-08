@@ -24,6 +24,7 @@ const DetailsMoviePage = lazy(() => import('./pages/DetailsMoviePage.jsx'))
 const DetailsSeriePage = lazy(() => import('./pages/DetailsSeriePage'))
 const List = lazy(() => import('./pages/List'))
 const Search = lazy(() => import('./pages/Search'))
+const SearchList = lazy(() => import('./pages/SearchList'))
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path='/anime' element={<Anime />} />
             <Route path='/:id/:title' element={<DetailsMoviePage />} />
             <Route path='/list/:page' element={<List />} />
+            <Route path='/search/:keyword/:page' element={<SearchList />} />
             <Route path='/series/:id/:title' element={<DetailsSeriePage />} />
             <Route path='/anime/:id/:title' element={<DetailsAnimePage />} />
             <Route path='/series/:id/:title/:season/:episode' element={<EpisodeSerie />} />

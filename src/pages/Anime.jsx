@@ -4,22 +4,19 @@ import { ListOfAnimes } from "../components/ListOfAnimes";
 import { getAnimeList } from "../services/getAnimeList";
 
 const Anime = () => {
-    const [movieList, setMovieList] = useState([]);
+    const [animeList, setAnimeList] = useState([]);
 
 
     useEffect(() => {
         getAnimeList().then(data => {
-            setMovieList(data)
+            setAnimeList(data)
         })
     }, [])
     return (
         <>
             <div className='bg-black text-white'>
                 <div className='w-full max-w-[1200px] mx-auto'>
-                    {movieList && <ListOfAnimes movieList={movieList} />}
-                    <div className='flex justify-around h-12 items-center'>
-                        {movieList && <button className='h-6 hover:border-b-slate-50 hover:border-b-2'>Siguiente</button>}
-                    </div>
+                    {animeList && <ListOfAnimes animeList={animeList} />}
                 </div>
             </div>
             <Footer />
