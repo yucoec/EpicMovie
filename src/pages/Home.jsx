@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CarouselMovie from "../components/CarouselMovie";
 import EpiModal from "../components/EpiModal";
 import { Footer } from "../components/Footer";
 import { ListOfMovies } from "../components/ListOfMovies";
@@ -31,6 +32,7 @@ const Home = () => {
     return (
         <>
             <div className='bg-black text-white'>
+                <CarouselMovie />
                 <div className='w-full max-w-[1400px] mx-auto'>
                     {currentProducts && <ListOfMovies movieList={currentProducts} />}
                     <div className='flex justify-around h-12 items-center'>
