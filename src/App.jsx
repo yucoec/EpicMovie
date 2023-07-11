@@ -29,9 +29,9 @@ const SearchList = lazy(() => import('./pages/SearchList'))
 function App() {
   return (
     <HelmetProvider>
-      <Suspense fallback={<MoonLoader color='#fff' size={120} speedMultiplier={2} />}>
-        <BrowserRouter>
-          <Header />
+      <BrowserRouter>
+        <Header />
+        <Suspense fallback={<MoonLoader color='#fff' size={120} speedMultiplier={2} />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path='/series' element={<Series />} />
@@ -46,8 +46,8 @@ function App() {
             <Route path='/search/:keyword' element={<Search />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
-        </BrowserRouter>
-      </Suspense>
+        </Suspense>
+      </BrowserRouter>
     </HelmetProvider >
   )
 }
