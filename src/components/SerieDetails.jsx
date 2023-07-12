@@ -81,7 +81,7 @@ const SerieDetails = ({ details, backPage }) => {
                 {serie.map(({ season_number, id: season_id, episodes }) => {
                     return (
                         temporadaSeleccionada === season_number && (
-                            <SeasonList key={season_id} id={id} season_number={season_number} episodes={episodes} name={details.original_name} />
+                            <SeasonList key={season_id} id={id} season_number={season_number} episodes={episodes} name={details.original_name} imgNotFound={details.backdrop_path} />
                         )
                     );
                 })}

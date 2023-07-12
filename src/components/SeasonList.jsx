@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import getSeasonList from "../services/getSeasonList";
 
-const SeasonList = ({ id, season_number, name, episodes }) => {
+const SeasonList = ({ id, season_number, name, episodes, imgNotFound }) => {
     const [season, setSeason] = useState([])
     useEffect(() => {
         getSeasonList(id, season_number).then(res => {
@@ -28,7 +28,7 @@ const SeasonList = ({ id, season_number, name, episodes }) => {
                         <Link key={idEpisodes} id={idEpisodes} to={`/series/${id}/${nameSerie}/${season_number}/${episode_number}`} className="cursor-pointer h-auto bg-transparent w-full rounded mb-2  hover:scale-105 duration-300">
                             <figure className="relative">
                                 <span className="absolute hover: bottom-0 left-0 right-[-0.5px] h-14 bg-gradient-to-t from-black/80 via-transparent to-transparent"></span>
-                                <img src={`https://image.tmdb.org/t/p/w500${still_path}`} alt={name} />
+                                {still_path ? <img src={`https://image.tmdb.org/t/p/w500${still_path}`} alt={name} /> : <img src={`https://image.tmdb.org/t/p/w500${imgNotFound}`} alt="Image Not found" />}
                             </figure>
                             <h2 className="py-3">{episode_number}.- {name}</h2>
                         </Link>
