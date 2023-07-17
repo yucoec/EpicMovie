@@ -40,7 +40,7 @@ const SerieDetails = ({ details, backPage }) => {
         getSerieDetails(id, 'tv').then(data => setSeason(data.seasons))
     }, [id]);
     serie.map(({ id }) => {
-        const seasonData = season.find(item => {
+        const seasonData = season?.find(item => {
             return item.id === parseInt(id);
         });
         if (seasonData) {
@@ -80,7 +80,7 @@ const SerieDetails = ({ details, backPage }) => {
                     <select className='w-auto outline-none appearance-none bg-cyan-500 border-gray-300 rounded-md py-3 px-2 pr-10' onChange={(e) => setTemporadaSeleccionada(Number(e.target.value))}>
                         {serie.map(({ season_number, id }) => (
                             <option key={id} value={season_number}>
-                                {season.find(item => item.id === parseInt(id))?.name || `Temporada ${season_number}`}
+                                {season?.find(item => item.id === parseInt(id))?.name || `Temporada ${season_number}`}
                             </option>
                         ))}
                     </select>

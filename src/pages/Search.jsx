@@ -30,7 +30,7 @@ const Search = () => {
 
     return (
         <div className='bg-black text-white h-full max-w-[1200px] mx-auto'>
-            {currentProducts.length !== 0 && (
+            {currentProducts.length !== 0 ? (
                 <div className='grid gap-4 grid-cols-16 mx-[5px] max-[482px]:grid-cols-17 justify-items-center justify-center pt-2'>
                     {currentProducts.map(({ category, id, calidad, name }) => {
                         return category === 'movie' ? (
@@ -40,7 +40,7 @@ const Search = () => {
                         );
                     })}
                 </div>
-            )}
+            ) : <div className='text-center font-bold text-xl'>No se encontraron resultados de {keyword}</div>}
 
             <div className='flex justify-around h-12 items-center'>
                 {currentProducts.length !== 0 && searchResults.length > indexOfLastProduct && (
