@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaTelegramPlane } from "react-icons/fa";
 import { IoCloseCircleSharp } from "react-icons/io5";
-import QrCode from "../assets/qrcode.svg";
 
 const EpiModal = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -21,10 +20,7 @@ const EpiModal = () => {
         <>
             {modalOpen && (
                 <div className="w-full bg-[#202225]">
-                    <div className="max-w-[1400px] max-[500px]:gap-1 flex items-center max-[810px]:flex-wrap py-2 px-2 gap-5 mx-auto justify-evenly">
-                        <a href="https://t.me/EpicMoviee" target="_blank" rel="preload">
-                            <img src={QrCode} className="w-24" alt="Epic Movie" />
-                        </a>
+                    <div className="max-w-[1400px] max-[500px]:gap-1 flex items-center max-[810px]:flex-wrap py-6 px-2 gap-5 mx-auto justify-evenly">
                         <p className="py-2 text-white text-center">
                             Unete al Telegram donde se avisa cada que se agrega nuevo contenido a la web
                         </p>
@@ -40,7 +36,7 @@ const EpiModal = () => {
                             className="max-[810px]:absolute right-0 top-1"
                             onClick={closeModal}
                         >
-                            <IoCloseCircleSharp className="text-red-500 text-5xl" />
+                            <IoCloseCircleSharp className="text-red-500 text-5xl max-[810px]:text-4xl" />
                         </button>
                     </div>
                 </div>

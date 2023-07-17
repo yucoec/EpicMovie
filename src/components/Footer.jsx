@@ -3,7 +3,7 @@ import { BsTelegram } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 export function Footer() {
-    return <footer className="footer footer-center p-10  text-white rounded">
+    return <footer className="text-white">
         <div className="flex justify-center gap-6 items-center mb-2">
             <Link to="/" className='hover:border-b-slate-50 hover:border-b-2 border-b-2 border-transparent'> Peliculas</Link>
             <Link to='/series' className='hover:border-b-slate-50 hover:border-b-2 border-b-2 border-transparent'> Series</Link>
