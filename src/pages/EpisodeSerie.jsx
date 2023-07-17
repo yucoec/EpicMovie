@@ -15,7 +15,7 @@ import { useChangeEpisodes } from "../hooks/useChangeEpisodes"
 import useEpisodeDetails from "../hooks/useEpisodeDetails"
 
 const EpisodeSerie = () => {
-    const [inputValue, setInputValue] = useState('hackstore.ac');
+    const [inputValue, setInputValue] = useState('');
     const inputRef = useRef(null);
     const { id, season, episode, title } = useParams()
     const { prevEpisode, nextEpisode, totalEpisodes } = useChangeEpisodes({ id, season, episode })
@@ -36,22 +36,16 @@ const EpisodeSerie = () => {
         }
     }
 
+    const currentPasword = links.password ? (links.passwordText || 'hackstore.ac') : null
+    const handleCopyClick = (currentPasword) => {
+        inputRef.current.select();
+        document.execCommand('copy');
+        setInputValue('Contraseña copiada!');
+        setTimeout(() => {
+            setInputValue(currentPasword);
+        }, 1500);
 
-    const handleCopyClick = () => {
-        const inputElement = document.getElementById('copyInput');
-        inputElement.select();
-        navigator.clipboard.writeText(inputElement.value)
-            .then(() => {
-                setInputValue('Contraseña copiada!');
-                setTimeout(() => {
-                    setInputValue('hackstore.ac');
-                }, 1500);
-            })
-            .catch((error) => {
-                console.error('Error al copiar al portapapeles:', error);
-            });
     };
-
 
     return (
         <>
@@ -95,8 +89,8 @@ const EpisodeSerie = () => {
                                 <img className='w-96 hover:scale-105 duration-300' src={links.btn_episodes_pack} alt="imagen del boton" />
                             </a></>}
                             {links.password && <><p className='flex gap-2 justify-center text-xl py-3'>Copiar  contraseña</p><div className='flex justify-center  items-center mb-2'>
-                                <input className='text-black px-3 py-1 focus-visible:outline-none rounded-l-md' id="copyInput" ref={inputRef} value={inputValue} readOnly onClick={() => inputRef.current.select()} />
-                                <button className='bg-cyan-500 px-3 py-1 rounded-r-md' onClick={handleCopyClick}>Copiar</button>
+                                <input className='text-black px-3 py-1 focus-visible:outline-none rounded-l-md' id="copyInput" ref={inputRef} value={inputValue || currentPasword} readOnly onClick={() => inputRef.current.select()} />
+                                <button className='bg-cyan-500 px-3 py-1 rounded-r-md' onClick={() => handleCopyClick(currentPasword)}>Copiar</button>
                             </div>
                                 <a href="https://www.winrar.es/descargas" target="_blank" rel="noopener noreferrer" className='flex gap-2 justify-center items-center mb-2 bg-cyan-500 rounded-md w-1/2 p-1 max-lg:w-2/3 max-[670px]:w-full'>
                                     <img className='w-11 p-1' src={winrarLogo} alt="Logo de winrar" />
