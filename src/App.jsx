@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { MoonLoader } from 'react-spinners'
+import EpiModal from './components/EpiModal'
 import Header from './components/Header'
 // import Anime from './pages/Anime'
 // import DetailsAnimePage from './pages/DetailsAnimePage'
@@ -29,6 +30,7 @@ const SearchList = lazy(() => import('./pages/SearchList'))
 function App() {
   return (
     <HelmetProvider>
+      <EpiModal />
       <BrowserRouter>
         <Header />
         <Suspense fallback={<MoonLoader color='#fff' size={120} speedMultiplier={2} />}>

@@ -17,6 +17,10 @@ export function Footer() {
                 <Link to='https://t.me/EpicMoviee' target="_blank" className="w-fit"><BsTelegram className='text-2xl' /></Link>
             </div>
         </div>
+        <div className="text-center my-1 ">
+            <Link to='https://docs.google.com/forms/d/e/1FAIpQLSfcbms4UypSnvQYmV7r-wIpxrKcDvTUO3yNaRawPmQnJSOYHQ/viewform' className='hover:border-b-slate-50 hover:border-b-2 border-b-2 border-transparent mr-2' target="_blank"> Pedidos</Link>
+            <Link to='https://docs.google.com/forms/d/e/1FAIpQLScTy8WV-tl0ZAiKcN2KQ4_jObJWzF6pHVNno47GzMQENs0OhQ/viewform' className='hover:border-b-slate-50 hover:border-b-2 border-b-2 border-transparent' target="_blank"> Reportar link</Link>
+        </div>
         <div className="text-center">
             <p>Copyright © 2023 - Epic Movie Todos los derechos reservados</p>
         </div>

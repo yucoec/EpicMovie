@@ -45,7 +45,7 @@ const Carousel = () => {
             setCurrentPage(
                 (prevPage) => (prevPage + 1) % Math.ceil(movieList.length / cardsPerPage)
             );
-        }, 6000);
+        }, 10000);
 
         return () => {
             clearInterval(interval);
@@ -94,7 +94,7 @@ const Carousel = () => {
         <>
             <p className='text-center text-xl font-bold'>Estrenos</p>
             <div className="flex flex-row items-center justify-center w-full max-w-[1400px] mx-auto h-[400px]">
-                <button onClick={handlePrevPage} className="mr-2 px-4 py-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem]">
+                <button onClick={handlePrevPage} className="mr-2 max-[525px]:px-3 max-[525px]:text-sm px-4 py-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem]">
                     Anterior
                 </button>
                 <div className="overflow-x-hidden overflow-hidden max-w-[900px] ">
@@ -116,7 +116,7 @@ const Carousel = () => {
                             ))}
                     </div>
                 </div>
-                <button onClick={handleNextPage} className="ml-2 px-4 py-2 bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem]">
+                <button onClick={handleNextPage} className="ml-2 px-4 py-2 max-[525px]:px-3 max-[525px]:text-sm bg-cyan-500 hover:scale-105 duration-300 rounded-[3rem]">
                     Siguiente
                 </button>
             </div>

@@ -4,6 +4,7 @@ import { BsArrowLeft } from 'react-icons/bs'
 import { useParams } from 'react-router-dom'
 import imageNotFound from '../assets/imageNotFound.png'
 import { getAnimeList } from '../services/getAnimeList'
+import getSerieDetails from '../services/getSerieDetails'
 import SeasonListAnime from './SeasonListAnime'
 
 function obtenerPrimeraTemporada(serie) {
@@ -15,6 +16,7 @@ function obtenerPrimeraTemporada(serie) {
 
 const AnimeDetails = ({ details, backPage }) => {
     const [serie, setSerie] = useState([]);
+    const [season, setSeason] = useState(null);
     const { id } = useParams()
     const [temporadaSeleccionada, setTemporadaSeleccionada] = useState(null);
 
@@ -28,7 +30,19 @@ const AnimeDetails = ({ details, backPage }) => {
                 setTemporadaSeleccionada(obtenerPrimeraTemporada(matchingSerie.seasons));
             }
         });
+
+        getSerieDetails(id, 'tv').then(data => setSeason(data.seasons))
     }, [id]);
+
+    serie.map(({ id }) => {
+        const seasonData = season.find(item => {
+            return item.id === parseInt(id);
+        });
+        if (seasonData) {
+            seasonData.name = seasonData.name || "Temporada " + seasonData.season_number;
+        }
+        return null;
+    });
 
     return (
         <>
@@ -60,9 +74,9 @@ const AnimeDetails = ({ details, backPage }) => {
             <section className='text-white h-full max-w-[1400px] mx-auto'>
                 <div className='min-[482px]:mx-5 mx-2 py-5 relative w-fit'>
                     <select className='w-auto outline-none appearance-none bg-cyan-500 border-gray-300 rounded-md py-3 px-2 pr-10' onChange={(e) => setTemporadaSeleccionada(Number(e.target.value))}>
-                        {serie.map(({ season_number }) => (
-                            <option key={season_number} value={season_number}>
-                                Temporada {season_number}
+                        {serie.map(({ season_number, id }) => (
+                            <option key={id} value={season_number}>
+                                {season.find(item => item.id === parseInt(id))?.name || `Temporada ${season_number}`}
                             </option>
                         ))}
                     </select>

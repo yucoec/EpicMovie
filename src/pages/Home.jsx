@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CarouselMovie from "../components/CarouselMovie";
-import EpiModal from "../components/EpiModal";
 import { Footer } from "../components/Footer";
 import { ListOfMovies } from "../components/ListOfMovies";
 import { getMovieList } from "../services/getMovieList";
@@ -40,7 +39,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <EpiModal />
             <Footer />
         </>
     )
