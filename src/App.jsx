@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { MoonLoader } from 'react-spinners'
 import EpiModal from './components/EpiModal'
 import Header from './components/Header'
+import ListAnime from './pages/ListAnime'
+import ListSeries from './pages/ListSeries'
 // import Anime from './pages/Anime'
 // import DetailsAnimePage from './pages/DetailsAnimePage'
 // import DetailsMoviePage from './pages/DetailsMoviePage.jsx'
@@ -40,6 +42,8 @@ function App() {
             <Route path='/anime' element={<Anime />} />
             <Route path='/:id/:title' element={<DetailsMoviePage />} />
             <Route path='/list/:page' element={<List />} />
+            <Route path='/series/list/:page' element={<ListSeries />} />
+            <Route path='/anime/list/:page' element={<ListAnime />} />
             <Route path='/search/:keyword/:page' element={<SearchList />} />
             <Route path='/series/:id/:title' element={<DetailsSeriePage />} />
             <Route path='/anime/:id/:title' element={<DetailsAnimePage />} />
