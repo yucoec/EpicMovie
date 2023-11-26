@@ -67,7 +67,7 @@ const EpisodeSerie = () => {
                             <div className='flex w-full flex-wrap min-[600px]:flex-nowrap px-1 relative'>
                                 {poster ? <img className='w-24 h-36 object-cover min-[600px]:static min-[600px]:w-[calc(27.65%-0.125rem)] min-[600px]:h-auto absolute top-[350px] min-[482px]:w-[120px]' src={`https://image.tmdb.org/t/p/w500${poster}`} alt={detailsEpisode.name} /> : <img src={imageNotFound} alt='img not found' />}
                                 <div className='min-[600px]:w-[calc(72.35%-0.125rem)] min-[600px]:ml-2 min-[600px]:h-auto w-[640px] h-[340px]'>
-                                    {images && images[0] ? < img className='min-[600px]:ml-2 h-full object-cover' src={`https://image.tmdb.org/t/p/w1280${images[0].file_path}`} alt={detailsEpisode.name} /> : <img className='min-[600px]:ml-2 h-full object-cover' src={imageNotFound} alt='img not found' />}
+                                    {images && images[1] ? < img className='min-[600px]:ml-2 h-full object-cover' src={`https://image.tmdb.org/t/p/w1280${images[1].file_path}`} alt={detailsEpisode.name} /> : <img className='min-[600px]:ml-2 h-full object-cover' src={imageNotFound} alt='img not found' />}
                                 </div>
                             </div>
                             <div className='pl-[calc(95px+1rem)] min-[600px]:pl-0 min-[482px]:pl-[calc(120px+1rem)] my-2'>
