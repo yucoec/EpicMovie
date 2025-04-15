@@ -116,25 +116,6 @@ const MovieDetails = ({ details, backPage, movieLinks }) => {
                                     <p>Te recomendamos usar el reproductor VLC Player para que no tengas problemas al reproducir La Peliculas en tu PC o celular.</p>
 
                                 </div>
-                                <div className='flex gap-2 justify-center flex-col items-center mb-2'>
-                                    <p className=' w-full text-xl py-4 text-center'>Link para ver la pelicula Online:</p>
-                                    <a href={online} target='_blank' rel='noreferrer'><p className='flex gap-2 items-center bg-cyan-500 p-3 rounded-xl text-3xl hover:scale-105 duration-300'><AiFillPlayCircle />Ver Online</p></a>
-                                </div>
-                                <DiscussionEmbed shortname='epic-movie' config={disqusConfig} className='w-full' />
-                                <div className="flex flex-wrap justify-center items-center gap-4 mx-[calc(2rem*.5)]">
-                                    <div className="overflow-hidden relative container-before min-[625px]:h-[192px] min-[767px]:h-[215px]">
-                                        <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en pc</p>
-                                        <iframe src='https://drive.google.com/file/d/1eAfAlz6fexwL6B_I1AUP7pt0eeSH1B1f/preview' allowFullScreen className='h-auto w-full align-middle rounded-3xl object-cover' />
-                                    </div>
-                                    <div className="overflow-hidden relative container-before min-[625px]:h-[192px] min-[767px]:h-[215px]">
-                                        <p className=' w-full text-xl py-4 text-center'>Tutorial de descarga en celular</p>
-                                        <iframe src='https://drive.google.com/file/d/19zOkFYUcf6m7Wd7hEN1FQP0zLzUMhSp5/preview' allowFullScreen className='h-auto w-full align-middle rounded-3xl object-cover' />
-                                    </div>
-                                    <div className="overflow-hidden relative container-before min-[625px]:h-[192px] min-[767px]:h-[215px]">
-                                        <p className=' w-full text-xl py-4 text-center'>Como pasar el acortador CUTY.IO</p>
-                                        <Youtube opts={opts} videoId="/1g89qEw863w" />
-                                    </div>
-                                </div>
                                 <div className='flex justify-center py-7'>
                                     <button className='flex gap-1 items-center hover:border-b-2 hover:border-b-slate-50 border-b-2 border-transparent' onClick={backPage}><BsArrowLeft />Atras</button>
                                 </div>
